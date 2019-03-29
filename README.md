@@ -1,6 +1,7 @@
 # zcad
 
-## Computerized Adaptive Diagnosis @ Center for Health Statistics &
+## Computerized Adaptive Diagnosis 
+@ Center for Health Statistics &
 The Laboratory for Zero Knowledge Discovery, University of Chicago 
 
 ---
