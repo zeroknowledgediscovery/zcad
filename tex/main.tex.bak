@@ -110,7 +110,7 @@
 
 The dataset consists of 211 items to which 304
 subjects responded. The responses are integer valued in the range $[0,5]$.
-  Each respondent is either has a positive or a negative
+  Each respondant is either has a positive or a negative
   PTSD diagnosis.
 
 \section*{Problem Description}
@@ -123,7 +123,7 @@ Our model has the following a priori constraint:
 \item At most $6$ items can be used for a single subject
 \end{itemize}
 under which we aim to maximize performance measured by standard
-metrics such as the area under the receiver-operating characteristics curve (AUC).
+metrics such as the area under the reciever-operating characteristics curve (AUC).
 
 Additionally, we require that our approach has the ability to generate
  a plurality of distinct tests of comparable performance, $i.e.$, two subjects
