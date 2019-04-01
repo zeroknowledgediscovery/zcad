@@ -1,0 +1,142 @@
+\documentclass[twocolumn,,10pt]{IEEEtran}
+\let\labelindent\relax
+\usepackage{enumitem}
+\input{preamble.tex} 
+% \usepackage{geometry}
+% \geometry{a4paper, left=.6in,right=.6in,top=.8in,bottom=0.7in}
+\usepackage{textcomp}
+\usepackage{colortbl}
+\usepackage{subfigure}
+\usepackage{array}
+\usepackage{courier}
+\usepackage{wrapfig}
+\usepackage{pifont}
+\usetikzlibrary{chains,backgrounds}
+\usetikzlibrary{intersections}
+\usetikzlibrary{pgfplots.groupplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{pgfplotstable}
+\usepackage[super]{cite} 
+\usepackage{setspace} 
+\makeatletter \renewcommand{\@citess}[1]{\raisebox{1pt}{\textsuperscript{[#1]}}} \makeatother
+\usepackage{xstring}
+\usepackage{xspace}
+\usepackage{flushend}
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+  {-2ex \@plus -1ex \@minus -.2ex}%
+  {1ex \@plus.1ex}%
+  {\large\bfseries\scshape}}
+\renewcommand\subsection{\@startsection {section}{1}{\z@}%
+  {-1ex \@plus -.25ex \@minus -.2ex}%
+  {0.1ex \@plus.0ex}%
+  {\fontsize{11}{10}\selectfont\bfseries\sffamily\color{DodgerBlue4}}}
+\renewcommand\subsubsection{\@startsection {section}{1}{\z@}%
+  {0ex \@plus -.5ex \@minus -.2ex}%
+  {0.0ex \@plus.5ex}%
+  {\fontsize{9}{9}\selectfont\bfseries\sffamily\color{Red4}}}
+\renewcommand\paragraph{\@startsection {section}{1}{\z@}%
+  {-1.5ex \@plus -.5ex \@minus -.2ex}%
+  {0.0ex \@plus.5ex}%
+  {\fontsize{9}{9}\selectfont\itshape\sffamily\color{teal!50!black}}}
+
+
+\makeatother
+\makeatletter
+\pgfdeclareradialshading[tikz@ball]{ball}{\pgfqpoint{-10bp}{10bp}}{%
+  color(0bp)=(tikz@ball!30!white);
+  color(9bp)=(tikz@ball!75!white);
+  color(18bp)=(tikz@ball!90!black);
+  color(25bp)=(tikz@ball!70!black);
+  color(50bp)=(black)}
+\makeatother
+\newcommand{\tball}[1][CadetBlue4]{${\color{#1}\Large\boldsymbol{\blacksquare}}$}
+\renewcommand{\baselinestretch}{.95}
+\renewcommand{\captionN}[1]{\caption{\color{CadetBlue4!80!black} \sffamily \fontsize{8}{9}\selectfont #1  }}
+\tikzexternaldisable 
+\parskip=7pt
+\parindent=0pt
+\newcommand{\Mark}[1]{\textsuperscript{#1}}
+% \lhead{\sf\footnotesize \color{DodgerBlue4!70!black}\today}
+\pagestyle{fancy}
+\def\COLA{black}
+% ###################################
+\cfoot{\bf\sffamily \scriptsize \color{Maroon!50} \disclosure }
+\cfoot{}
+% \lhead{\sffamily \scriptsize \color{DodgerBlue4!70!black} Algorithms for Threat Detection NSF 17-510}
+\rhead{\scriptsize\bf\sffamily\thepage}
+\newcommand{\partxt}{\bf\sffamily\itshape}
+% ############################################################
+\newif\iftikzX
+\tikzXtrue
+\tikzXfalse
+\def\jobnameX{atd}
+\newcommand{\SPX}[1][50pt]{\vspace{#1}}
+% ############################################################
+\newcommand{\incomplete}{\colorbox{Red1!80}{\textbf{\footnotesize\color{white}(incomplete section)}}}
+\def\FWN{\textbf{\small FWN}\xspace}
+% ############################################################
+\begin{document} 
+% 
+% \chead{\bf\sffamily \footnotesize \color{DodgerBlue4!90!black} I. Chattopadhyay, University of Chicago}
+% 
+\twocolumn[
+\xtitaut{\bf\sffamily \Large \color{black!90!DodgerBlue1}  \fontsize{16}{18}\selectfont 
+  {Prediction \& Intervention of   Criminal Infractions in Urban Environments\\
+    \vskip .1em
+    \small \rm Ishanu Chattopadhyay (ishanu@uchicago.edu)
+    % \hrule 
+  } 
+}{}]{}
+\vspace{-10pt}   
+
+\begin{abstract}
+  Prediction of social phenomena.
+\end{abstract}
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+%###########################################################
+%###########################################################
+\begin{figure*}[!ht]
+  \tikzexternalenable
+
+  \centering 
+
+  \input{Figures/figpred1}
+
+  %\vspace{-15pt}
+
+  \captionN{We see a strong associationn with spatial distribution of socio-economic indicators and the distribution of predicted enforcement response to perturbations in crime rates. With a 10\% increase in each of violent and non-violent crime rates, we  have approximatey a $30\%$ decrease in arrests when averaged over the city. However, the spatial distribution of locations which experience a positive vs a negative change in the rate of arrests reveals a strong preference for favorable socio-economic indicators for the former. Thus, if neighborhoods are doing better socio-economically, increasing crime seems to predict increased arrests. A strong converse trend is observed in our predictions for neighborhoods doing worse. }\label{fig0}
+\end{figure*}
+%###########################################################
+%###########################################################
+%###########################################################
+
+
+note:
+fig0 is aboutr problem
+fig1 is abpout prediction
+
+fig2 is about diseses indicators
+
+fig4 is about methodology
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
