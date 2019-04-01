@@ -14,7 +14,7 @@ def ask(item,B=0,E=5):
     return {item:int(response)}
 
 
-modelset=cx.load('../model/model_2_3.pkl')
+modelset=cx.load('../model/model_3_2.pkl')
 model=cx.chooseForm(modelset)
 
 cx.drawTrees(model,PREF='../model/this')

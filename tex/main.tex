@@ -1,4 +1,4 @@
-\documentclass[twocolumn,,10pt]{IEEEtran}
+\documentclass[twocolumn,,9pt]{IEEEtran}
 \let\labelindent\relax
 \usepackage{enumitem}
 \input{preamble.tex} 
@@ -81,47 +81,108 @@
 % \chead{\bf\sffamily \footnotesize \color{DodgerBlue4!90!black} I. Chattopadhyay, University of Chicago}
 % 
 \twocolumn[
-\xtitaut{\bf\sffamily \Large \color{black!90!DodgerBlue1}  \fontsize{16}{18}\selectfont 
-  {Prediction \& Intervention of   Criminal Infractions in Urban Environments\\
-    \vskip .1em
+\xtitaut{\bf\sffamily \Large \color{black!90!DodgerBlue1}  \fontsize{16}{20}\selectfont 
+  {Using Machine Learning\\To Design A Robust Computerized Adaptive  Test  for\\Post Traumatic Stress Disorder Diagnosis\\%From A Limited Number of   Item Responses\\
+    \vskip .5em
     \small \rm Ishanu Chattopadhyay (ishanu@uchicago.edu)
+    \vspace{-5pt}
+    
+    \small \rm Robert Gibbons (ishanu@uchicago.edu)
     % \hrule 
   } 
 }{}]{}
 \vspace{-10pt}   
 
-\begin{abstract}
-  Prediction of social phenomena.
-\end{abstract}
+% \begin{abstract}
+%   Diagnosing PTSD from short adaptive questionnaire.
+% \end{abstract}
+
+\section*{Data set}
+
+\begin{table}[!ht]
+  \begin{tabular}{|L{1.5in}|L{.3in}|}\hline
+    \bf \sffamily No. of samples & 304 \\\hline
+    \bf \sffamily No. of items (features) & 211 \\\hline
+  \end{tabular}
+\end{table}
+
+The dataset consists of 211 items to which 304
+subjects responded. The responses are integer valued in the range $[0,5]$.
+  Each respondant is either has a positive or a negative
+  PTSD diagnosis.
+
+\section*{Problem Description}
+
+Given the dataset as described above, we aim to infer a
+model that predicts the diagnosis given the responses
+to a model-directed choice of subset from the  item bank.
+Our model has the following a priori constraint:
+\begin{itemize}
+\item At most $6$ items can be used for a single subject
+\end{itemize}
+under which we aim to maximize performance measured by standard
+metrics such as the area under the reciever-operating characteristics curve (AUC).
+
+Additionally, we require that our approach has the ability to generate
+ a plurality of distinct tests of comparable performance, $i.e.$, two subjects
+  taking the test are not necessarily given the same items to respond to.
+
 
 % ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-%###########################################################
-%###########################################################
-\begin{figure*}[!ht]
+% %###########################################################
+% %###########################################################
+  \section*{Solution: Extremely Randomized Trees}
+
+  A search of the space of possible classification algorithms indicated that
+  the \textit{extra-trees algorithm} performs best, $i.e.$ maximizes AUC under the constraint described above, while allowing for the generation of hundreds of distinct test sets. The Extra-Trees method (standing for extremely randomized trees) was proposed in~\cite{ert06}, with the  objective of further randomizing tree building in the context of numerical input features, where the choice of the optimal cut-point is responsible for a large proportion of the variance of the induced tree.
+
+ 
+  % ######################
+\begin{figure}[!ht]
+  \centering
   \tikzexternalenable
+  
+  \begin{tikzpicture}[font=\bf\sffamily\fontsize{8}{8}\selectfont]
+    \def\WDT{3.35in}
+    \def\WDTA{2.65in}
+    \node[] (A) {\includegraphics[width=\WDTA]{Figures/roc}};
+    \node[anchor=north] (B) at ([yshift=-.2in]A.south) {\includegraphics[width=\WDTA]{Figures/Result32}};
+    \node[anchor=north] (C) at ([yshift=-.2in]B.south) {\includegraphics[width=\WDT]{Figures/thistree0}};
+        \node[anchor=north] (D) at ([yshift=-.3in]C.south) {\includegraphics[width=\WDT]{Figures/thistree1}};
+\node[anchor=south west] (L1) at (A.north west) {{\large A.} ROC Curve };
+\node[anchor=south west] (L1) at ($(A.north west)!(B.north west)!(A.south west)$) {{\large B.} AUC vs No. of Distinct Tests };
+\node[anchor=south west] (L1) at ($(A.north west)!(C.north west)!(A.south west)$) {{\large C.} Generated Test Example (Estimator 1)};
+\node[anchor=south west] (L1) at ([yshift=0in]$(A.north west)!(D.north west)!(A.south west)$) {{\large D.} Generated Test Example (Estimator 2)};
 
-  \centering 
+\end{tikzpicture}
+\vspace{-15pt}
 
-  \input{Figures/figpred1}
+\captionN{Plate A shows a representative ROC curve obtained during training with random test-train split (30/70 split). Plate B shows the variation of the median performance against the number of such models obtained, which reflects the number of distinct test sets that can be generated. Plate C and D illustrate a single test, with two estimators, each being a decision tree of depth 3, implying that  the maximum number of items presented: $6$. }\label{fig1}
+\vspace{-10pt}
 
-  %\vspace{-15pt}
+\end{figure}
+%####################################
+%####################################
+%####################################
+%####################################
+%####################################
 
-  \captionN{We see a strong associationn with spatial distribution of socio-economic indicators and the distribution of predicted enforcement response to perturbations in crime rates. With a 10\% increase in each of violent and non-violent crime rates, we  have approximatey a $30\%$ decrease in arrests when averaged over the city. However, the spatial distribution of locations which experience a positive vs a negative change in the rate of arrests reveals a strong preference for favorable socio-economic indicators for the former. Thus, if neighborhoods are doing better socio-economically, increasing crime seems to predict increased arrests. A strong converse trend is observed in our predictions for neighborhoods doing worse. }\label{fig0}
-\end{figure*}
-%###########################################################
-%###########################################################
-%###########################################################
+With respect to random forests, the method drops the idea of using bootstrap copies of the learning sample, and instead of trying to find an optimal cut-point for each one of the K randomly chosen features at each node, it selects a cut-point at random. This idea is rather productive in the context of many problems characterized by a large number of numerical features varying more or less continuously: it leads often to increased accuracy thanks to its smoothing and at the same time significantly reduces computational burdens linked to the determination of optimal cut-points in standard trees and in random forests. From a statistical point of view, dropping the bootstrapping idea leads to an advantage in terms of bias, whereas the cut-point randomization has often an excellent variance reduction effect. This method has yielded state-of-the-art results in several high-dimensional complex problems. From a functional point of view, the Extra-Tree method produces piece-wise multilinear approximations, rather than the piece-wise constant ones of random forests.
+
+\section*{Results \& Discussion}
 
 
-note:
-fig0 is aboutr problem
-fig1 is abpout prediction
+\section*{Software}
+All software sources are available at the Github Repository link:
+\href{https://github.com/zeroknowledgediscovery/zcad}{https://github.com/zeroknowledgediscovery/zcad}
 
-fig2 is about diseses indicators
 
-fig4 is about methodology
+\bibliographystyle{siam}
+\bibliography{ptsd}
+
+
 
 \end{document}
 
