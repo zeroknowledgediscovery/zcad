@@ -17,6 +17,6 @@ def ask(item,B=0,E=5):
 modelset=cx.load('../model/model_2_3.pkl')
 model=cx.chooseForm(modelset)
 
-
+cx.drawTrees(model,PREF='../model/this')
 [r,p]=cx.runCAD(model,nfeatures,ask=ask)
 print(p)
