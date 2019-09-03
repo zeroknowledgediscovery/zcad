@@ -1,5 +1,9 @@
 <html>
 
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script> -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<!-- <script type="text/javascript" src="js/jquery.tmpl.1.1.1.js"> </script> -->
+
 <style>
 .content {
   max-width: 500px;
@@ -9,47 +13,67 @@
 <body>
 <div class="content">
 
-<p>Version: <b id="version_num"></b> </p>
+<p>
+
+  <!-- $(selector).append( t , {
+    url: "aaaa.com",
+    name: "hi"
+});
+
+$.tmpl(tmpl, vals); -->
+</p>
+<p> Notes: </p>
+<ul>
+  <li>If you change your answer, you have to refresh and restart the questions.</li>
+  <li>Please enter in only numbers 0, 1, 2, 3, 4, 5.</li>
+</ul>
+
+<p>Question Version: <b id="version_num"></b> </p>
 
 <p>1. Question <b id="q1_number"></b> </p>
-
-<input type="number" id="q1" min="0" max="5" size="20">
-<!-- <input id="q1" size="30"> -->
+<p> <b id="q1_sentence"></b> </p>
+<p> <b id="q1_choices"></b> </p>
+<input  id="q1" min="0" max="5" size="20">
 <button id="q1_btn" >Submit</button>
 <div id="q1_display"></div>
 
 <br>
 <p>2. Question <b id="q2_number"></b> </p>
-<input type="number" id="q2" min="0" max="5" size="20">
-<!-- <input id="q2" size="30"> -->
+<p> <b id="q2_sentence"></b> </p>
+<p> <b id="q2_choices"></b> </p>
+<input  id="q2" min="0" max="5" size="20">
 <button id="q2_btn" >Submit</button>
 <div id="q2_display"></div>
 
 <br>
 <p>3. Question <b id="q3_number"></b> </p>
-<input type="number" id="q3" min="0" max="5" size="20">
-<!-- <input id="q3" size="30"> -->
+<p> <b id="q3_sentence"></b> </p>
+<p> <b id="q3_choices"></b> </p>
+<input  id="q3" min="0" max="5" size="20">
 <button id="q3_btn" >Submit</button>
 <div id="q3_display"></div>
 
 <br>
 <p>4. Question <b id="q4_number"></b> </p>
-<input type="number" id="q4" min="0" max="5" size="20">
-<!-- <input id="q4" size="30"> -->
+<p> <b id="q4_sentence"></b> </p>
+<p> <b id="q4_choices"></b> </p>
+<input  id="q4" min="0" max="5" size="20">
 <button id="q4_btn" >Submit</button>
 <div id="q4_display"></div>
 
 <br>
 <p>5. Question <b id="q5_number"></b> </p>
-<input type="number" id="q5" min="0" max="5" size="20">
-<!-- <input id="q5" size="30"> -->
+<p> <b id="q5_sentence"></b> </p>
+<p> <b id="q5_choices"></b> </p>
+<input  id="q5" min="0" max="5" size="20">
 <button id="q5_btn" >Submit</button>
 <div id="q5_display"></div>
 
 <br>
 <p>6. Question <b id="q6_number"></b> </p>
-<input type="number" id="q6" min="0" max="5" size="20">
-<!-- <input id="q6" size="30"> -->
+<p> <b id="q6_sentence"></b> </p>
+<p> <b id="q6_choices"></b> </p>
+<input  id="q6" min="0" max="5" size="20">
 <button id="q6_btn" >Submit</button>
 <div id="q6_display"></div>
 
@@ -58,12 +82,28 @@
 <input id="finish_button" type="button" value="Finish Questions" OnClick="finish()"/> 
 
 <div id="result"></div>
+<div id="prediction_proba"></div>
 
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script> -->
+
+
+
 <script type="text/javascript" src="js/questions.js"> </script>
 
-<script>
 
+<script>
+/*jquery.tmpl.1.1.1.js */
+
+/* Return true if the input is between 0 and 5 and is an integer. */
+function checkCorrectInput(input_value) {
+  input_value = Number(input_value);
+  var correct = input_value >= 0 
+                && input_value <= 5
+                && Number.isInteger(input_value);
+  return correct;
+}
+
+
+const INPUT_ALERT = "Input must be integers between 0 and 5 inclusively.";
 /* Set version number */
 document.getElementById("version_num").innerHTML = extraTree.name;
 
@@ -74,15 +114,14 @@ document.getElementById('q1_btn').addEventListener(
   'click', function() {
 
     var input_value = document.getElementById("q1").value.toString();
-    if (input_value >= 0 && input_value <= 5) {
+    if (checkCorrectInput(input_value)) {
       var next_nums = [1,4,1,4];
       submit_answer('q1', 'q1_display', q1);
       setNextQuestion(q1, q2, 0, 0, next_nums);
     }
     else {
-      alert("Input must be between 0 and 5 inclusively.");
+      alert(INPUT_ALERT);
     }
-    
   }
 );;
 
@@ -91,18 +130,14 @@ document.getElementById('q2_btn').addEventListener(
   'click', function() {
 
     var input_value = document.getElementById("q2").value.toString();
-    if (input_value >= 0 && input_value <= 5) {
+    if (checkCorrectInput(input_value)) {
       var next_nums = [2,3,5,6];
       submit_answer('q2', 'q2_display', q2);
       setNextQuestion(q2, q3, 1, 4, next_nums);
     }
     else {
-      alert("Input must be between 0 and 5 inclusively.");
+      alert(INPUT_ALERT);
     }
-
-    // var next_nums = [2,3,5,6];
-    // submit_answer('q2', 'q2_display', q2);
-    // setNextQuestion(q2, q3, 1, 4, next_nums);
   }
 );;
 
@@ -110,69 +145,55 @@ document.getElementById('q3_btn').addEventListener(
   'click', function() {
 
     var input_value = document.getElementById("q3").value.toString();
-    if (input_value >= 0 && input_value <= 5) {
+    if (checkCorrectInput(input_value)) {
       submit_answer('q3', 'q3_display', q3);
       setfirstQ(q4);
     }
     else {
-      alert("Input must be between 0 and 5 inclusively.");
+      alert(INPUT_ALERT);
     }
-
-
-    // submit_answer('q3', 'q3_display', q3);
-    // setfirstQ(q4);
   }
 );;
 
 document.getElementById('q4_btn').addEventListener(
   'click', function() {
     var input_value = document.getElementById("q4").value.toString();
-    if (input_value >= 0 && input_value <= 5) {
+    if (checkCorrectInput(input_value)) {
       var next_nums = [8,11,8,11];
       submit_answer('q4', 'q4_display', q4);
       setNextQuestion(q4, q5, 7, 7, next_nums);
     }
     else {
-      alert("Input must be between 0 and 5 inclusively.");
+      alert(INPUT_ALERT);
     }
-
-    // var next_nums = [8,11,8,11];
-    // submit_answer('q4', 'q4_display', q4);
-    // setNextQuestion(q4, q5, 7, 7, next_nums);
   }
 );;
 
 document.getElementById('q5_btn').addEventListener(
   'click', function() {
     var input_value = document.getElementById("q5").value.toString();
-    if (input_value >= 0 && input_value <= 5) {
+    if (checkCorrectInput(input_value)) {
       var next_nums = [9,10,12,13];
       submit_answer('q5', 'q5_display', q5);
       setNextQuestion(q5, q6, 8, 11, next_nums);
     }
     else {
-      alert("Input must be between 0 and 5 inclusively.");
+      alert(INPUT_ALERT);
     }
-
-    // var next_nums = [9,10,12,13];
-    // submit_answer('q5', 'q5_display', q5);
-    // setNextQuestion(q5, q6, 8, 11, next_nums);
   }
 );;
 
 document.getElementById('q6_btn').addEventListener(
   'click', function() {
     var input_value = document.getElementById("q6").value.toString();
-    if (input_value >= 0 && input_value <= 5) {
+    if (checkCorrectInput(input_value)) {
       submit_answer('q6', 'q6_display', q6);
     }
     else {
-      alert("Input must be between 0 and 5 inclusively.");
+      alert(INPUT_ALERT);
     }
-    // submit_answer('q6', 'q6_display', q6);
   }
 );;
-
 
 
 

@@ -1,25 +1,65 @@
-/* TODO: need to make sure the inputs are valid (between 0 and 5, must be integers).
-   TODO: make sure I can allow users to change their inputs. This is important 
-         because their input affects the next question that is asked.
-   TODO: write tests to test if output is correct. 
-         http://www.protractortest.org/#/
+/*          
+    TODO: Nunjucks for no repeated code.
+        https://github.com/mozilla/nunjucks
+    TODO: JSON files should be in pretty print
 
+For running tests:
+    http://www.protractortest.org/#/
+
+    Why is javascript a piece of shit?
 */
 
-NUM_FEATURES = 211;
 
-/* SHORT (only contains 5 extraTrees) */
-JSON_FILE = '{"f0": {"q_numbers": [131, 143, 140, 3, 191, 82, 98, 152, 194, 69, 208, 170, 49, 129], "thresholds": [2.966, 3.174, 1.909, 3.404, 2.533, 1.421, 3.034, 2.114, 1.047, 2.736, 4.112, 2.029, 3.257, 3.349]}, "f1": {"q_numbers": [134, 127, 135, 132, 195, 172, 16, 192, 70, 196, 110, 94, 90, 55], "thresholds": [2.16, 3.039, 3.52, 3.092, 3.565, 1.624, 4.655, 2.915, 2.152, 1.011, 3.017, 2.196, 3.084, 2.571]}, "f2": {"q_numbers": [119, 68, 110, 185, 194, 196, 1, 143, 26, 73, 196, 95, 98, 122], "thresholds": [3.226, 2.607, 3.318, 2.215, 2.371, 2.368, 2.928, 2.683, 2.476, 4.828, 2.669, 4.512, 1.904, 1.687]}, "f3": {"q_numbers": [143, 180, 186, 201, 184, 137, 60, 68, 192, 138, 186, 96, 160], "thresholds": [2.886, 1.427, 2.942, 4.005, 2.714, 3.89, 2.103, 3.464, 2.977, 1.85, 1.52, 1.816, 2.988]}, "f4": {"q_numbers": [24, 192, 106, 7, 168, 184, 199, 94, 175, 75, 110, 147, 96, 186], "thresholds": [2.747, 3.025, 1.689, 2.147, 4.579, 3.766, 3.0, 2.917, 1.99, 2.184, 3.784, 2.832, 4.98, 1.086]}, "fextraTrees": {"q_numbers": [143, 180, 186, 201, 184, 137, 60, 68, 192, 138, 186, 96, 160], "thresholds": [2.886, 1.427, 2.942, 4.005, 2.714, 3.89, 2.103, 3.464, 2.977, 1.85, 1.52, 1.816, 2.988]}}'
+
+
+var extraTrees = (function() {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        // test_tree is the short version, for testing
+        'url': "js/test_tree.json",
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    for (var name in json) {
+        json[name].name = name;
+    }
+    return json;
+})();
+
+
+var ptsdQuestions = (function() {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "js/questions.json",
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+})();
+
+console.log(ptsdQuestions);
+
+
+
+NUM_FEATURES = 211;
 
 /* Here we have a bunch of extraTrees. 
    We will select one predictor from the extraTrees.
    That predictor has trees under it since an extraTree is an ensemble 
 */
-var extraTrees = parseJSON(JSON_FILE);
 /* select a random extraTree predictor */
 // var extraTree = getRandomProperty(extraTrees);
 /* I use the first one for testing purposes. */
 var extraTree = extraTrees.f0;
+// var extraTree = extraTrees.fextraTrees;
 /* include the sklearn-porter file for prediction */
 include("js/extraTrees/" + extraTree.name.slice(1,) + ".js");
 
@@ -33,12 +73,12 @@ class Question {
     }
 }
 
-var q1 = new Question(document.getElementById('q1').value, -1, 0, "q1");
-var q2 = new Question(document.getElementById('q2').value, -1, -1, "q2");
-var q3 = new Question(document.getElementById('q3').value, -1, -1, "q3");
-var q4 = new Question(document.getElementById('q4').value, -1, 7, "q4");
-var q5 = new Question(document.getElementById('q5').value, -1, -1, "q5");
-var q6 = new Question(document.getElementById('q6').value, -1, -1, "q6");
+var q1 = new Question(document.getElementById('q1').value, null, 0, "q1");
+var q2 = new Question(document.getElementById('q2').value, null, null, "q2");
+var q3 = new Question(document.getElementById('q3').value, null, null, "q3");
+var q4 = new Question(document.getElementById('q4').value, null, 7, "q4");
+var q5 = new Question(document.getElementById('q5').value, null, null, "q5");
+var q6 = new Question(document.getElementById('q6').value, null, null, "q6");
 
 
 
@@ -71,7 +111,16 @@ function parseJSON(string) {
 function setfirstQ(q_obj) {
     var q_num = extraTree.q_numbers[q_obj.q_num_position];
     q_obj.q_num = q_num;
-    document.getElementById(q_obj.name + "_number").innerHTML = q_num;
+
+    tagInnerHTML(
+        q_obj.name + "_number", 
+        q_num);
+    tagInnerHTML(
+        q_obj.name + "_sentence", 
+        ptsdQuestions["ptsd" + q_num].questions);
+    tagInnerHTML(
+        q_obj.name + "_choices", 
+        ptsdQuestions["ptsd" + q_num].choices);
 }
 
 
@@ -100,7 +149,17 @@ function setNextQuestion(prev_q, next_q, top_num, bottom_num, next_nums) {
     }
 
     var q_num = extraTree.q_numbers[next_num];
-    document.getElementById(next_q.name + "_number").innerHTML = q_num;
+
+    tagInnerHTML(
+        next_q.name + "_number", 
+        q_num);
+    tagInnerHTML(
+        next_q.name + "_sentence", 
+        ptsdQuestions["ptsd" + q_num].questions);
+    tagInnerHTML(
+        next_q.name + "_choices", 
+        ptsdQuestions["ptsd" + q_num].choices);
+
     next_q.q_num = q_num;
     next_q.q_num_position = next_num;
 }
@@ -137,6 +196,25 @@ function predict() {
 }
 
 
+/* Perform a sanity check for inputs. 
+   Question number should not be null or undefined.
+   Question inputs should not be blank.
+*/
+function saneInputs(){
+    var is_sane;
+
+    is_sane = (isNull(q1) 
+              || isNull(q2) 
+              || isNull(q3) 
+              || isNull(q4) 
+              || isNull(q5) 
+              || isNull(q6)); 
+
+    return !is_sane;   
+}
+
+
+/* Write out output to console and to screen. */
 function finish() {
     var prediction;
     printQuestionObj(q1);
@@ -146,9 +224,24 @@ function finish() {
     printQuestionObj(q5);
     printQuestionObj(q6);
 
+    if (saneInputs()) {
+        console.log("Sane inputs");
+    }
+    else {
+        console.log("Not sane inputs.");
+        alert("Please answer all questions. If you change your answers, please refresh page.");
+    }
+
     prediction = predict();
 
-    document.getElementById("result").innerHTML = prediction.toString();
+    tagInnerHTML(
+        "prediction_proba",
+        prediction.toString()
+    );
+    tagInnerHTML(
+        "result",
+        findMaxIndex(prediction).toString()
+    );
 }
 
 
@@ -167,11 +260,58 @@ function include(filename)
 }
 
 
+/* Write out the output to html. */
+function tagInnerHTML(tag, output) {
+    document.getElementById(tag).innerHTML = output;
+}
+
+
 /* get a random property from an object */
 function getRandomProperty(obj) {
     var keys = Object.keys(obj)
     return obj[keys[ keys.length * Math.random() << 0]];
 };
+
+
+/* find the index with maximum value in array */
+var findMaxIndex = function(nums) {
+    var index = 0;
+    for (var i = 0; i < nums.length; i++) {
+        index = nums[i] > nums[index] ? i : index;
+    }
+    return index;
+};
+
+
+/* Check if any of the property values of the objects 
+   are null.
+   Return true if any are null.
+ */
+function isNull(object) {
+    var any_null;
+    var null_array = []
+    for (property in object) {
+        // any_null = any_null || (object[property] == null || object[property] == '');
+        // any_null = any_null && (object[property] == null);
+        null_array.push(object[property]);
+    }
+
+    var meetsCondition = function(element) {
+        return (element == null) || (element === '');
+      };
+
+    any_null = null_array.some(meetsCondition);
+    // if (any_null) {
+    //     console.log(object.name);
+    //     console.log()
+    // }
+    // else {
+    //     console.log("wtd");
+    // }
+    return any_null;
+}
+
+
 
 
 
@@ -227,3 +367,109 @@ function getRandomProperty(obj) {
 //     }
 
 // }
+
+
+
+// var xmlRequest = new XMLHttpRequest();
+// xmlRequest.onreadystatechange = function() {
+//   if (this.readyState == 4 && this.status == 200) {
+//     var extraTrees = JSON.parse(this.responseText);
+//     // document.getElementById("demo").innerHTML = myObj.na/me;
+//   }
+// };
+// xmlRequest.open("GET", "js/tree_splits.json", true);
+// xmlRequest.send();
+
+
+
+// $.getJSON("js/tree_splits.json", function(json) {
+//     console.log(json); // this will show the info it in firebug console
+// });
+
+// var extraTrees = $.getJSON("test.json");
+
+// $.ajax ({ url: "js/tree_splits.json", method: "GET"})
+// .success(function (response) {
+//    var extraTrees = $.parseJSON (response);
+// });
+
+
+// var xmlhttp = new XMLHttpRequest();
+// xmlhttp.onreadystatechange = function() {
+// //   if (this.readyState == 4 && this.status == 200) {
+//     var extraTrees = JSON.parse(this.responseText);
+//     // document.getElementById("demo").innerHTML = myObj.name;
+//     console.log(extraTrees);
+//     // var extraTree = extraTrees.f0;
+// //   }
+// };
+// xmlhttp.open("GET", "js/tree_splits.json", true);
+// xmlhttp.send();
+
+// function loadJSON(callback) {   
+
+//     var xobj = new XMLHttpRequest();
+//         // xobj.overrideMimeType("application/json");
+//     xobj.open('GET', "js/tree_splits.json", true); // Replace 'my_data' with the path to your file
+//     xobj.onreadystatechange = function () {
+//           if (xobj.readyState == 4 && xobj.status == "200") {
+//             // Required use of an anonymous callback as .open will NOT return a value but simply returns undefined in asynchronous mode
+//             callback(xobj.responseText);
+//           }
+//     };
+//     xobj.send(null);  
+//  }
+
+//  function init() {
+//     loadJSON(function(response) {
+//      // Parse JSON string into object
+//        var actual_JSON = JSON.parse(response);
+//     });
+//    }
+
+
+
+// function loadJSON(callback) {
+
+//     var xobj = new XMLHttpRequest();
+//     // xobj.overrideMimeType("application/json");
+//     xobj.open('GET', "js/tree_splits.json", true);
+//     xobj.onreadystatechange = function() {
+//         if (xobj.readyState == 4 && xobj.status == "200") {
+
+//             // .open will NOT return a value but simply returns undefined in async mode so use a callback
+//             callback(xobj.responseText);
+
+//         }
+//     }
+//     xobj.send(null);
+
+// }
+
+// // Call to function with anonymous callback
+// loadJSON(function(response) {
+//     // Do Something with the response e.g.
+//     //jsonresponse = JSON.parse(response);
+
+//     // Assuming json data is wrapped in square brackets as Drew suggests
+//     //console.log(jsonresponse[0].name);
+
+// });
+
+
+
+// $.getJSON("js/tree_splits.json", function(extraTrees_){
+// // alert(data);
+//     var extraTrees = extraTrees_;
+//     return extraTree;
+// });
+
+// var extraTrees = getJSON();
+
+
+// var zz = $.getJSON("js/test_tree.json", function(json) {
+//     console.log(json); // this will show the info it in firebug console
+//     // return json.responseText;
+// });
+
+// console.log(zz);
