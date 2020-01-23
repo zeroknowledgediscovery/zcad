@@ -250,6 +250,7 @@ def runCAD(model,nfeatures,ask=ask):
 
 
 def chooseForm(modelset,index=None):
+    index = 0
     if index is None:
         index=random.randint(0,len(modelset)-1)
     return modelset[index]
