@@ -1,12 +1,5 @@
 /* To run tests:
 
-Click here: http://www.protractortest.org/#/tutorial for starting up protractor.
-
-Versions:
-    Node.js: 6.9.0
-    Protractor: 5.4.2
-    JDK: 12.0.2
-
 Need to change:
     browser site
 
@@ -15,7 +8,7 @@ NOTE:
     To "seed" the randomness, we choose 0.js as the testing extraTrees.
 */
 
-var website = 'http://0.0.0.0:8000/Projects/ZED/zcad/website/ptsd_diagnosis.html';
+var website = 'http://0.0.0.0:8000/ptsd_diagnosis.html';
 /* 
     test_inputN: input to the question number
     test_questionsN: expected question number to be asked
@@ -42,7 +35,7 @@ var test_input6 = [null, -6,-6,-6,-6,-6,-6];
 var test_input7 = [null, -1.5, 2.5,3.5,4.6,2.1,4.21312];
 
 
-/* Activate this to slow down inputs for protractor. 
+/* NOTE: Uncomment this to slow down inputs for protractor. 
 */
 // var origFn = browser.driver.controlFlow().execute;
 // browser.driver.controlFlow().execute = function() {
