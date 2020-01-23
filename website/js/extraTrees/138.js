@@ -1,12 +1,17 @@
 var ExtraTreesClassifier = function() {
 
-    var findMax = function(nums) {
-        var index = 0;
-        for (var i = 0; i < nums.length; i++) {
-            index = nums[i] > nums[index] ? i : index;
+    var findProb = function(classes) {
+        var sum = 0;
+        var output = [];
+        for (var i = 0; i < classes.length; i++) {
+            sum += classes[i];
         }
-        return index;
-    };
+
+        for (var j = 0; j < classes.length; j++) {
+            output[j] = classes[j] / sum;
+        }
+        return output;
+    }
 
     var trees = new Array();
 
@@ -45,8 +50,9 @@ var ExtraTreesClassifier = function() {
                 }
             }
         }
+        // return findMax(classes);
+        return findProb(classes);
     
-        return findMax(classes);
     });
     
     trees.push(function(features) {
@@ -79,16 +85,25 @@ var ExtraTreesClassifier = function() {
                 }
             }
         }
+        // return findMax(classes);
+        return findProb(classes);
     
-        return findMax(classes);
     });
     
     this.predict = function(features) {
         var classes = new Array(2).fill(0);
         for (var i = 0; i < trees.length; i++) {
-            classes[trees[i](features)]++;
+            for (var j = 0; j < 2 ; j ++) {
+                classes[j] += trees[i](features)[j];
+            }
+            // classes[trees[i](features)]++;
         }
-        return findMax(classes);
+    
+        for (var k = 0; k < 2 ; k ++) {
+            classes[k] = classes[k] / trees.length;
+        }
+    
+        return classes;
     }
 
 };

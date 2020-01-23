@@ -9,9 +9,27 @@ For running tests:
     Why is javascript a piece of shit?
 */
 
+const NUM_FEATURES = 211;
+const INPUT_ALERT = "Input must be integers between 0 and 5 inclusively.";
 
 
+/* Load the PTSD questions and choices. */
+var ptsdQuestions = (function() {
+    var json = null;
+    $.ajax({
+        'async': false,
+        'global': false,
+        'url': "js/questions.json",
+        'dataType': "json",
+        'success': function (data) {
+            json = data;
+        }
+    });
+    return json;
+})();
 
+
+/* Load all the extraTrees from a JSON file. */
 var extraTrees = (function() {
     var json = null;
     $.ajax({
@@ -31,39 +49,25 @@ var extraTrees = (function() {
 })();
 
 
-var ptsdQuestions = (function() {
-    var json = null;
-    $.ajax({
-        'async': false,
-        'global': false,
-        'url': "js/questions.json",
-        'dataType': "json",
-        'success': function (data) {
-            json = data;
-        }
-    });
-    return json;
-})();
 
-console.log(ptsdQuestions);
-
-
-
-NUM_FEATURES = 211;
-
-/* Here we have a bunch of extraTrees. 
-   We will select one predictor from the extraTrees.
-   That predictor has trees under it since an extraTree is an ensemble 
+/* We will select one predictor from the extraTrees.
+   That predictor has trees under it since an extraTree is an ensemble.
 */
 /* select a random extraTree predictor */
 // var extraTree = getRandomProperty(extraTrees);
 /* I use the first one for testing purposes. */
 var extraTree = extraTrees.f0;
-// var extraTree = extraTrees.fextraTrees;
 /* include the sklearn-porter file for prediction */
 include("js/extraTrees/" + extraTree.name.slice(1,) + ".js");
 
 
+/* 
+Attributes:
+    value: user's answer to question
+    q_num: question number
+    q_num_position: 
+    name: question order
+*/
 class Question {
     constructor(value, q_num, q_num_position, name ) {
         this.value = value;
@@ -311,6 +315,15 @@ function isNull(object) {
     return any_null;
 }
 
+
+/* Return true if the input is between 0 and 5 and is an integer. */
+function checkCorrectInput(input_value) {
+    input_value = Number(input_value);
+    var correct = input_value >= 0 
+                  && input_value <= 5
+                  && Number.isInteger(input_value);
+    return correct;
+  }
 
 
 

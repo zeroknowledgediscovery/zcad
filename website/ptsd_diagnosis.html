@@ -13,15 +13,7 @@
 <body>
 <div class="content">
 
-<p>
 
-  <!-- $(selector).append( t , {
-    url: "aaaa.com",
-    name: "hi"
-});
-
-$.tmpl(tmpl, vals); -->
-</p>
 <p> Notes: </p>
 <ul>
   <li>If you change your answer, you have to refresh and restart the questions.</li>
@@ -80,30 +72,13 @@ $.tmpl(tmpl, vals); -->
 
 <br>
 <input id="finish_button" type="button" value="Finish Questions" OnClick="finish()"/> 
-
 <div id="result"></div>
 <div id="prediction_proba"></div>
 
 
 
-
 <script type="text/javascript" src="js/questions.js"> </script>
-
-
 <script>
-/*jquery.tmpl.1.1.1.js */
-
-/* Return true if the input is between 0 and 5 and is an integer. */
-function checkCorrectInput(input_value) {
-  input_value = Number(input_value);
-  var correct = input_value >= 0 
-                && input_value <= 5
-                && Number.isInteger(input_value);
-  return correct;
-}
-
-
-const INPUT_ALERT = "Input must be integers between 0 and 5 inclusively.";
 /* Set version number */
 document.getElementById("version_num").innerHTML = extraTree.name;
 
@@ -141,6 +116,7 @@ document.getElementById('q2_btn').addEventListener(
   }
 );;
 
+
 document.getElementById('q3_btn').addEventListener(
   'click', function() {
 
@@ -154,6 +130,7 @@ document.getElementById('q3_btn').addEventListener(
     }
   }
 );;
+
 
 document.getElementById('q4_btn').addEventListener(
   'click', function() {
@@ -169,6 +146,7 @@ document.getElementById('q4_btn').addEventListener(
   }
 );;
 
+
 document.getElementById('q5_btn').addEventListener(
   'click', function() {
     var input_value = document.getElementById("q5").value.toString();
@@ -183,6 +161,7 @@ document.getElementById('q5_btn').addEventListener(
   }
 );;
 
+
 document.getElementById('q6_btn').addEventListener(
   'click', function() {
     var input_value = document.getElementById("q6").value.toString();
@@ -196,18 +175,7 @@ document.getElementById('q6_btn').addEventListener(
 );;
 
 
-
-// var json = require('tree_splits.json')
-
-// import * as data from 'tree_splits.json';
-
 </script>
-
-<!-- <script>
-var fs = require('fs');
-var textByLine = fs.readFileSync('tree_splits.json').toString().split("\n");
-document.getElementById("demo2").innerHTML = textByLine;
-</script> -->
 </div>
 </body>
 </html>
