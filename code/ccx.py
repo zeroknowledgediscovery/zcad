@@ -172,7 +172,7 @@ def getSystem(X,y,max_depth=2,n_estimators=3):
     PERF=PERF.reshape(int(len(PERF)/3),3)    
     return PERF,DPERF,MODELS,NITEMS
 
-def PLOT(Dperf,Nitems,N=1000,dn=''):
+def PLOT(Dperf,Nitems,N=1000,dn='',pdfname='../model/Result'+dn+'.pdf'):
     '''
         Plots the achieved AUC along with 
         confidence bounds against the 
@@ -192,7 +192,7 @@ def PLOT(Dperf,Nitems,N=1000,dn=''):
     plt.title('AUC vs Test Variation (99% CB)',fontsize=12,fontweight='bold')
     plt.text(0.55,0.9,NUMQ,transform=plt.gca().transAxes,fontweight='bold',
              fontsize=12,bbox=dict(facecolor='k', alpha=0.4),color='w')
-    pdfname='../model/Result'+dn+'.pdf'
+    
     plt.savefig(pdfname,dpi=300,bbox_inches='tight',pad_inches=0,transparent=False)
     return
 
