@@ -36,7 +36,10 @@ var extraTrees = (function() {
         'async': false,
         'global': false,
         // test_tree is the short version, for testing
-        'url': "js/test_tree.json",
+        // 'url': "js/test_tree.json",
+
+        // tree_splits.json contains all the questions
+        'url': "js/tree_splits.json",
         'dataType': "json",
         'success': function (data) {
             json = data;
@@ -54,9 +57,9 @@ var extraTrees = (function() {
    That predictor has trees under it since an extraTree is an ensemble.
 */
 /* select a random extraTree predictor */
-// var extraTree = getRandomProperty(extraTrees);
+var extraTree = getRandomProperty(extraTrees);
 /* I use the first one for testing purposes. */
-var extraTree = extraTrees.f0;
+// var extraTree = extraTrees.f0;
 /* include the sklearn-porter file for prediction */
 include("js/extraTrees/" + extraTree.name.slice(1,) + ".js");
 
@@ -237,14 +240,29 @@ function finish() {
     }
 
     prediction = predict();
+    
+    prob_yes = prediction[1];
+    diagnosis = findMaxIndex(prediction).toString();
+
+
+
+    if (diagnosis == 0) {
+        result = "You do not have PTSD.";
+    }
+    else if (diagnosis == 1) {
+        result = "You have PTSD.";
+    }
+    else {
+        console.log("Something went wrong. The probability of the prediction can only be 0 or 1.")
+    }
 
     tagInnerHTML(
         "prediction_proba",
-        prediction.toString()
+        "Your probability of having PTSD is " + prob_yes.toString()
     );
     tagInnerHTML(
         "result",
-        findMaxIndex(prediction).toString()
+        result
     );
 }
 

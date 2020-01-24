@@ -7,6 +7,10 @@ This will contain important notes for running.
 * Open the `ptsd_diagnosis.html` file at:
     * `http://0.0.0.0:8000/ptsd_diagnosis.html`
 
+## Notes
+
+* when making changes to the javascript code or `.html` file, use incognito mode for website display because the changes will not be immediately reflected on the website
+
 
 
 # Running Tests
@@ -14,6 +18,7 @@ This will contain important notes for running.
 * Click [here](http://www.protractortest.org/#/tutorial) for starting up protractor (and setting things up). 
     * If there is a problem trying to install something, using `sudo` will help.
     * If something doesn't work, try redownloading everything.
+    * Also, we need to change the loaded tree files to `js/test_tree.json` and set `var extraTree = extraTrees.f0;`
 
 Versions that I have:
 * Protractor: 5.4.2 
