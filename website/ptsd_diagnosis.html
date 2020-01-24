@@ -1,5 +1,7 @@
 <html>
-
+  <header>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</header>
 <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0/angular.min.js"></script> -->
 <script src="js/jquery.min.js"></script>
 <!-- <script type="text/javascript" src="js/jquery.tmpl.1.1.1.js"> </script> -->
@@ -11,16 +13,24 @@
 }
 </style>
 <body>
+  <div>
+    <img width="50%" src=img/logo.png>
+  </div>
+  
+<hr>
 <div class="content">
 
 
-<p> Notes: </p>
+<p class="text-content" > Note: </p>
 <ul>
-  <li>If you change your answer, you have to refresh and restart the questions.</li>
-  <li>Please enter in only numbers 0, 1, 2, 3, 4, 5.</li>
+  <li> <p class="text-content-E"> If you change your answer, refresh & restart. </p></li>
+  <li><p class="text-content-E">Please enter only 0, 1, 2, 3, 4 or 5.</p></li>
 </ul>
+<p class="text-content">Question Version: <b id="version_num"></b> </p>
 
-<p>Question Version: <b id="version_num"></b> </p>
+<hr>
+
+
 
 <p>1. Question <b id="q1_number"></b> </p>
 <p> <b id="q1_sentence"></b> </p>
@@ -177,5 +187,10 @@ document.getElementById('q6_btn').addEventListener(
 
 </script>
 </div>
+
+<div id="footer">
+  generated  at JAN 24 2020
+</div>
+
 </body>
 </html>
