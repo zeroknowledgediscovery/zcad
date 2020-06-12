@@ -334,7 +334,15 @@ function isNull(object) {
 }
 
 
-/* Return true if the input is between 0 and 5 and is an integer. */
+/* Check if the input is "correct"
+
+As of now, the input is correct if:
+    the input is between 0 and 5
+    it is an integer
+
+Returns:
+    (bool)
+*/
 function checkCorrectInput(input_value) {
     input_value = Number(input_value);
     var correct = input_value >= 0 
