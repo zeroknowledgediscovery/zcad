@@ -110,13 +110,30 @@ def getAuc(X,y,test_size=0.25,max_depth=None,n_estimators=100,
     for clf in CLASSIFIERS:
         clf.fit(X_train,y_train)
         y_pred=clf.predict_proba(X_test)
-        fpr, tpr, thresholds = metrics.roc_curve(y_test,y_pred[:,1], pos_label=1)
-        auc=metrics.auc(fpr, tpr)
-        if VERBOSE:
-            print(auc)
+        if len(y_pred[0,:]) == 2:
+            fpr, tpr, thresholds = metrics.roc_curve(y_test,y_pred[:,1], pos_label=1)
+            auc=metrics.auc(fpr, tpr)
+            if VERBOSE:
+                print(auc)
 
-        FPR=np.append(FPR,fpr)
-        TPR=np.append(TPR,tpr)
+            FPR=np.append(FPR,fpr)
+            TPR=np.append(TPR,tpr)
+
+        else:
+            fpr, tpr, thresholds = metrics.roc_curve(y_test,y_pred[:,1], pos_label=1)
+            fpr1, tpr1, thresholds1 = metrics.roc_curve(y_test,y_pred[:,2], pos_label=2)
+            auc1=metrics.auc(fpr1, tpr1)
+            auc=metrics.auc(fpr, tpr)
+
+            if VERBOSE:
+                print(auc,auc1)
+
+            FPR=np.append(FPR,fpr)
+            TPR=np.append(TPR,tpr)
+            FPR=np.append(FPR,fpr1)
+            TPR=np.append(TPR,tpr1)
+
+        
     points=np.array([[a[0],a[1]] for a in zip(FPR,TPR)])
     hull = ConvexHull(points)
     x=np.argsort(points[hull.vertices,:][:,0])
