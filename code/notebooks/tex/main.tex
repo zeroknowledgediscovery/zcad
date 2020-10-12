@@ -1,0 +1,329 @@
+\documentclass[onecolumn, compsoc,9pt]{IEEEtran}
+\input{preamble.tex} 
+\usepackage{textcomp}
+\usepackage{subfigure}
+\usepackage{stmaryrd}
+\usetikzlibrary{chains,backgrounds}
+\usetikzlibrary{intersections}
+\usepgfplotslibrary{groupplots}
+\usepackage{xstring}
+
+\renewcommand{\baselinestretch}{.93}
+\renewcommand{\captionN}[1]{\caption{\color{darkgray} \sffamily \fontsize{8}{10}\selectfont #1  }}
+% ###################################
+% \parskip=4pt
+% \parindent=0pt
+
+\begin{document}  
+
+\def\TITLE{PTSD Analysis}
+%\twocolumn[{% 
+  \fontsize{20}{20}\selectfont \bf \sffamily
+  \flushleft  \TITLE \\\footnotesize  \vspace{10pt}  \bf \sffamily 
+  ZeD Lab@UChicago \texttt{(zed.uchicago.edu)}\\
+  \vskip .5em
+  Department of Medicince, University of Chicago, Chicago IL, USA
+  \vskip 5em
+  % 
+%}]
+ \vskip 1em
+
+
+ \begin{table}[!ht]
+   \centering
+  \caption{ROC and Confidence Bounds}
+\input{res}
+\end{table}
+
+\def\WDT{3in}
+\begin{figure}[!ht]
+\includegraphics[width=\WDT]{Figures/sczVSall.pdf}
+\includegraphics[width=\WDT]{Figures/sczVscaff.pdf}
+\includegraphics[width=\WDT]{Figures/sczsceff.pdf}
+\end{figure}
+
+
+\begin{tikzpicture}
+\node[] (a) at (0,0) {\includegraphics[width=\WDT]{Figures/sczVSall.pdf}};
+\node[anchor=west] (b) at ([yshift=0in]a.east) {\includegraphics[width=\WDT]{Figures/sczVscaff.pdf}};
+\node[anchor=north] (c) at ([yshift=-.2in]a.south) {\includegraphics[width=\WDT]{Figures/sczsceff.pdf}};
+\node[anchor=south west] (L1) at (a.north west) {\Large a.};
+\node[anchor=south west] (L2) at (b.north west) {\Large b.};
+\node[anchor=south west] (L3) at (c.north west) {\Large c.};
+
+\node[anchor=west] (T) at (c.east) {
+  \mnp{3.5in}{
+\input{res}
+  }
+};
+\end{tikzpicture}
+
+\end{document}
+%------------------------------------------------------
+\def\TEXTCOL{gray} % all text in the axes and labels
+\def\ZCOLA{black} % all text in the axes and labels
+\def\ZCOLAm{black!40} % all text in the axes and labels
+\def\ZCOLB{Orchid3} % all text in the axes and labels
+\def\ZCOLC{teal!80} % all text in the axes and labels
+
+\tikzexternaldisable
+
+\begin{figure}
+  \begin{tikzpicture}[font=\bf\sffamily\fontsize{8}{8}\selectfont]
+    \def\DATA{qvwho.csv} %define datafile
+
+    \def\WDT{3in} % width 
+    \def\HGT{1.5in} % height
+    \begin{semilogyaxis}[\TEXTCOL, legend style={text=black,anchor=east,at={(.8,0.8)},
+        inner sep=1pt,draw=none,fill=black!5,fill opacity=.75,align=right,
+        text opacity=1},
+      name=A,
+      % at=(F.south west),
+      xshift=0in,
+      yshift=-0.1in,
+      anchor=center,
+      width=\WDT,
+      height=\HGT,
+      scale only axis=true,
+      enlargelimits=false,
+      enlarge y limits=0.1,
+      enlarge x limits=0.04,
+      axis on top=false,
+      axis line style={black!2, very thick},
+      grid,
+      grid style={opacity=.95,dashed,ultra thick,black!10},
+      % xmin=2001,
+      major tick length=0pt,
+      ytick style={draw=none},
+      scaled y ticks = false,
+      y tick label style={/pgf/number format/fixed,
+        /pgf/number format/1000 sep = \empty % \thinspace optional
+      },
+      x tick label style={/pgf/number format/fixed,
+        /pgf/number format/1000 sep = \empty % Optional
+      },
+      ylabel={distance},xlabel={year},
+      skip coords between index={0}{1}]
+      % add as many addplot commands as u want (draws on same axes)
+      \addplot [smooth,
+      draw=\ZCOLA, ultra thick,mark=*,
+      mark options={scale=2.2,fill=\ZCOLAm,draw=white}]
+      table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+    \end{semilogyaxis}
+  \end{tikzpicture}
+\captionN{Line plot. style 1}
+\end{figure}
+
+
+\begin{figure}
+\tikzexternaldisable
+  \begin{tikzpicture}[font=\bf\sffamily\fontsize{8}{8}\selectfont]
+    \def\DATA{qvwho.csv}
+    \def\WDT{3in}
+    \def\HGT{1.5in}
+    \begin{semilogyaxis}[\TEXTCOL, legend style={text=black,anchor=east,at={(.8,0.8)},
+        inner sep=1pt,draw=none,fill=black!5,fill opacity=.75,align=right,
+        text opacity=1},
+      name=A,
+      % at=(F.south west),
+      xshift=0in,
+      yshift=-0.1in,
+      anchor=center,
+      width=\WDT,
+      height=\HGT,
+      scale only axis=true,
+      enlargelimits=false,
+      enlarge y limits=0.1,
+      enlarge x limits=0.04,
+      axis on top=false,
+      axis line style={black!2, very thick},
+      grid,
+      grid style={opacity=.95,dashed,ultra thick,black!10},
+      % xmin=2001,
+      major tick length=0pt,
+      ytick style={draw=none},
+      scaled y ticks = false,
+      y tick label style={/pgf/number format/fixed,
+        /pgf/number format/1000 sep = \empty % \thinspace optional
+      },
+      x tick label style={/pgf/number format/fixed,
+        /pgf/number format/1000 sep = \empty % Optional
+      },
+      ylabel={distance},xlabel={year},
+      skip coords between index={0}{1}]
+      \addplot [smooth,
+      draw=\ZCOLA, ultra thick,,mark=none,mark options={scale=2.2,fill=gray,draw=white}]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+      \addplot [smooth,
+      draw=\ZCOLB, ultra thick,,mark=none,mark options={scale=2.2,fill=gray,draw=white}]table [col sep=comma,x=year,y=qmetric] {\DATA};
+      \addlegendentry{qmetric}
+    \end{semilogyaxis}
+  \end{tikzpicture}
+\captionN{Line plot. style 2}
+\end{figure}
+
+
+
+
+
+\begin{figure}
+
+  \begin{tikzpicture}[font=\bf\sffamily\fontsize{8}{8}\selectfont]
+    \def\DATA{qvwho.csv}
+    \def\WDT{3in}
+    \def\HGT{1.5in}
+    \begin{axis}[ , legend style={text=black,anchor=east,at={(.8,0.8)},
+        inner sep=1pt,draw=none,fill=black!5,fill opacity=.75,align=right,
+        text opacity=1},
+      name=A,
+      xshift=0in,
+      yshift=-0.1in,
+      anchor=center,
+      width=\WDT,
+      height=\HGT,
+      scale only axis=true,
+      enlarge x limits=0.0325,
+      axis on top=false,
+      axis line style={black!2, ultra thick},
+      grid,
+      xmin=2001,
+      xmax=2018,
+      grid style={opacity=.95,dashed,ultra thick,black!10},
+      % xticklabel style={xshift=0.05in,yshift=-.05in},
+      xlabel style={yshift=.05in,text=\TEXTCOL},
+      ylabel style={align=center,,text=\TEXTCOL,anchor=center,
+        yshift=-.175in},
+      % tickpos=left,
+      ytick align=outside,
+      xtick align=outside,
+      major tick length=0pt,
+      scaled y ticks = false,
+      y tick label style={/pgf/number format/fixed,
+        /pgf/number format/1000 sep = \thinspace % Optional 
+      },
+      x tick label style={/pgf/number format/fixed,
+        /pgf/number format/1000 sep = \thinspace % Optional  
+      },
+      ylabel={distance},xlabel={year},ybar]
+
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+    \end{axis}
+  \end{tikzpicture}
+  \caption{barplot}
+\end{figure}
+
+
+
+
+\begin{figure}
+\centering
+
+  \begin{tikzpicture}[font=\bf\sffamily\fontsize{8}{8}\selectfont]
+    \def\DATA{qvwho.csv}
+    \def\WDT{2in}
+    \def\HGT{.5in}
+    \begin{groupplot}[group style={group name=A,group size= 1 by 15,horizontal sep=.5in,vertical sep=.05in},, legend style={text=black,anchor=east,at={(1,0.8)},
+        inner sep=1pt,draw=none,fill=black!5,fill opacity=.75,align=right,
+        text opacity=1},
+      anchor=center,
+      width=\WDT,
+     height=\HGT,
+      scale only axis=true,
+      enlarge x limits=0.0325,
+      axis on top=false,
+      axis line style={black!2, ultra thick},
+      grid,
+      xmin=2001,
+      xmax=2018,
+      grid style={opacity=.95,dashed,ultra thick,black!10},
+      % xticklabel style={xshift=0.05in,yshift=-.05in},
+      xlabel style={yshift=.05in,text=\TEXTCOL},
+      ylabel style={align=center,,text=\TEXTCOL,anchor=center,
+        yshift=-.175in},
+      % tickpos=left,
+      ytick align=outside,
+      xtick align=outside,
+      major tick length=0pt,
+      scaled y ticks = false,
+      y tick label style={/pgf/number format/fixed,
+        /pgf/number format/1000 sep = \thinspace % Optional 
+      },
+      x tick label style={/pgf/number format/fixed,
+        /pgf/number format/1000 sep = \thinspace % Optional  
+      },      ylabel={distance},xlabel={year},]
+      
+      \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},ylabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+      \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+      \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+      \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+      \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+      \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+      \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+      \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+       \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+       \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+       \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+       \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+       \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+       \nextgroupplot[ ybar,xticklabels=\empty,xlabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+      \nextgroupplot[ ybar,ylabel={},bar width=7pt, ]
+      \addplot [fill=\ZCOLC,draw=none]table [col sep=comma,x=year,y=lmetric] {\DATA};
+      \addlegendentry{lmetric}
+
+
+    \end{groupplot}
+
+  \end{tikzpicture}
+  \caption{group plot example}
+\end{figure}
+
+
+\end{document}
+
+
+

@@ -1,0 +1,1 @@
+sftp  ishanu@webspace.uchicago.edu:zed/data/zcad <<< $'put -r *'

@@ -1,0 +1,274 @@
+\documentclass[twocolumn,,9pt]{IEEEtran}
+\let\labelindent\relax
+\usepackage{enumitem}
+\input{preamble.tex} 
+% \usepackage{geometry}
+% \geometry{a4paper, left=.6in,right=.6in,top=.8in,bottom=0.7in}
+\usepackage{textcomp}
+\usepackage{colortbl}
+\usepackage{subfigure}
+\usepackage{array}
+\usepackage{courier}
+\usepackage{wrapfig}
+\usepackage{pifont}
+\usetikzlibrary{chains,backgrounds}
+\usetikzlibrary{intersections}
+\usetikzlibrary{pgfplots.groupplots}
+\usepgfplotslibrary{fillbetween}
+\usepackage{pgfplotstable}
+\usepackage[super]{cite} 
+\usepackage{setspace} 
+\makeatletter \renewcommand{\@citess}[1]{\raisebox{1pt}{\textsuperscript{[#1]}}} \makeatother
+\usepackage{xstring}
+\usepackage{xspace}
+%\usepackage{flushend}
+\makeatletter
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+  {-2ex \@plus -1ex \@minus -.2ex}%
+  {1ex \@plus.1ex}%
+  {\large\bfseries\scshape}}
+\renewcommand\subsection{\@startsection {section}{1}{\z@}%
+  {-1ex \@plus -.25ex \@minus -.2ex}%
+  {0.1ex \@plus.0ex}%
+  {\fontsize{11}{10}\selectfont\bfseries\sffamily\color{DodgerBlue4}}}
+\renewcommand\subsubsection{\@startsection {section}{1}{\z@}%
+  {0ex \@plus -.5ex \@minus -.2ex}%
+  {0.0ex \@plus.5ex}%
+  {\fontsize{9}{9}\selectfont\bfseries\sffamily\color{Red4}}}
+\renewcommand\paragraph{\@startsection {section}{1}{\z@}%
+  {-1.5ex \@plus -.5ex \@minus -.2ex}%
+  {0.0ex \@plus.5ex}%
+  {\fontsize{9}{9}\selectfont\itshape\sffamily\color{teal!50!black}}}
+
+
+\makeatother
+\makeatletter
+\pgfdeclareradialshading[tikz@ball]{ball}{\pgfqpoint{-10bp}{10bp}}{%
+  color(0bp)=(tikz@ball!30!white);
+  color(9bp)=(tikz@ball!75!white);
+  color(18bp)=(tikz@ball!90!black);
+  color(25bp)=(tikz@ball!70!black);
+  color(50bp)=(black)}
+\makeatother
+\newcommand{\tball}[1][CadetBlue4]{${\color{#1}\Large\boldsymbol{\blacksquare}}$}
+\renewcommand{\baselinestretch}{.95}
+\renewcommand{\captionN}[1]{\caption{\color{CadetBlue4!80!black} \sffamily \fontsize{8}{9}\selectfont #1  }}
+\tikzexternaldisable 
+\parskip=7pt
+\parindent=0pt
+\newcommand{\Mark}[1]{\textsuperscript{#1}}
+% \lhead{\sf\footnotesize \color{DodgerBlue4!70!black}\today}
+\pagestyle{fancy}
+\def\COLA{black}
+% ###################################
+\cfoot{\bf\sffamily \scriptsize \color{Maroon!50} \disclosure }
+\cfoot{}
+% \lhead{\sffamily \scriptsize \color{DodgerBlue4!70!black} Algorithms for Threat Detection NSF 17-510}
+\rhead{\scriptsize\bf\sffamily\thepage}
+\newcommand{\partxt}{\bf\sffamily\itshape}
+% ############################################################
+\newif\iftikzX
+\tikzXtrue
+\tikzXfalse
+\def\jobnameX{atd}
+\newcommand{\SPX}[1][50pt]{\vspace{#1}}
+% ############################################################
+\newcommand{\incomplete}{\colorbox{Red1!80}{\textbf{\footnotesize\color{white}(incomplete section)}}}
+\def\FWN{\textbf{\small FWN}\xspace}
+% ############################################################
+\begin{document} 
+% 
+% \chead{\bf\sffamily \footnotesize \color{DodgerBlue4!90!black} I. Chattopadhyay, University of Chicago}
+% 
+\twocolumn[
+\xtitaut{\bf\sffamily \Large \color{black!90!DodgerBlue1}  \fontsize{16}{20}\selectfont 
+  {Using Machine Learning\\To Design A Robust Computerized Adaptive  Test  for\\Post Traumatic Stress Disorder Diagnosis\\%From A Limited Number of   Item Responses\\
+    \vskip .5em
+    \small \rm Ishanu Chattopadhyay (ishanu@uchicago.edu)
+    \vspace{-5pt}
+    
+    \small \rm Robert Gibbons (ishanu@uchicago.edu)
+    % \hrule 
+  } 
+}{}]{}
+\vspace{-10pt}   
+
+% \begin{abstract}
+%   Diagnosing PTSD from short adaptive questionnaire.
+% \end{abstract}
+
+\section*{Data set}
+
+\begin{table}[!ht]
+  \centering
+  \captionN{Data Set Dimensions}\label{tab0}
+  \begin{tabular}{|L{1.5in}|L{.3in}|}\hline
+    No. of samples & 304 \\\hline
+    No. of items (features) & 211 \\\hline
+    No. of categories (target labels) & 3 \\\hline
+  \end{tabular}
+\end{table}
+
+The dataset consists of 211 items to which 304
+subjects responded. The responses are integer valued in the range $[0,5]$.
+  Each respondent is either has a positive or a negative
+  PTSD diagnosis.
+
+\section*{Problem Description}
+
+Given the dataset as described above, we aim to infer a
+model that predicts the diagnosis given the responses
+to a model-directed choice of subset from the  item bank.
+Our model has the following a priori constraint:
+\begin{itemize}
+\item At most $6$ items can be used for a single subject
+\end{itemize}
+under which we aim to maximize performance measured by standard
+metrics such as the area under the receiver-operating characteristics curve (AUC).
+
+Additionally, we require that our approach has the ability to generate
+ a plurality of distinct tests of comparable performance, $i.e.$, two subjects
+  taking the test are not necessarily given the same items to respond to.
+
+
+% ++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+% %###########################################################
+% %###########################################################
+  \section*{Solution: Extremely Randomized Trees}
+
+  A search of the space of possible classification algorithms indicated that
+  the \textit{extra-trees algorithm} performs best, $i.e.$ maximizes AUC under the constraint described above, while allowing for the generation of hundreds of distinct test sets. The Extra-Trees method (standing for extremely randomized trees) was proposed in~\cite{ert06}, with the  objective of further randomizing tree building in the context of numerical input features, where the choice of the optimal cut-point is responsible for a large proportion of the variance of the induced tree.
+
+ 
+  % ######################
+\begin{figure}[!ht]
+  \centering
+  \tikzexternalenable
+  
+  \begin{tikzpicture}[font=\bf\sffamily\fontsize{8}{8}\selectfont]
+    \def\WDT{3.35in}
+    \def\WDTA{2.65in}
+    \node[] (A) {\includegraphics[width=\WDTA]{Figures/roc}};
+    \node[anchor=north] (B) at ([yshift=-.2in]A.south) {\includegraphics[width=\WDTA]{Figures/Result32}};
+    \node[anchor=north] (C) at ([yshift=-.2in]B.south) {\includegraphics[width=\WDT]{Figures/thistree0}};
+        \node[anchor=north] (D) at ([yshift=-.3in]C.south) {\includegraphics[width=\WDT]{Figures/thistree1}};
+\node[anchor=south west] (L1) at (A.north west) {{\large A.} ROC Curve };
+\node[anchor=south west] (L1) at ($(A.north west)!(B.north west)!(A.south west)$) {{\large B.} AUC vs No. of Distinct Tests };
+\node[anchor=south west] (L1) at ($(A.north west)!(C.north west)!(A.south west)$) {{\large C.} Generated Test Example (Estimator 1)};
+\node[anchor=south west] (L1) at ([yshift=0in]$(A.north west)!(D.north west)!(A.south west)$) {{\large D.} Generated Test Example (Estimator 2)};
+
+\end{tikzpicture}
+\vspace{-15pt}
+
+\captionN{Plate A shows a representative ROC curve obtained during training with random test-train split (30/70 split). Plate B shows the variation of the median performance against the number of such models obtained, which reflects the number of distinct test sets that can be generated. Plate C and D illustrate a single test, with two estimators, each being a decision tree of depth 3, implying that  the maximum number of items presented: $6$. }\label{fig1}
+\vspace{-10pt}
+
+\end{figure}
+%####################################
+%####################################
+%####################################
+%####################################
+%####################################
+
+With respect to random forests, the method drops the idea of using bootstrap copies of the learning sample, and instead of trying to find an optimal cut-point for each one of the K randomly chosen features at each node, it selects a cut-point at random. This idea is rather productive in the context of many problems characterized by a large number of numerical features varying more or less continuously: it leads often to increased accuracy thanks to its smoothing and at the same time significantly reduces computational burdens linked to the determination of optimal cut-points in standard trees and in random forests. From a statistical point of view, dropping the bootstrapping idea leads to an advantage in terms of bias, whereas the cut-point randomization has often an excellent variance reduction effect. This method has yielded state-of-the-art results in several high-dimensional complex problems. From a functional point of view, the Extra-Tree method produces piece-wise multilinear approximations, rather than the piece-wise constant ones of random forests.
+
+\section*{Results \& Discussion}
+The constraint on the number of items to be presented implies that we  have
+the following possibilities for the number of estimators (m) and the depth of each estimator (d):
+\begin{itemize}
+\item 2 estimators, each of depth  3
+\item 3 estimators, each of depth 2
+\item 6 estimators, each of depth 1
+\item 1 estimator of depth 6
+\end{itemize}
+
+It turns out the that first scenario ($m=2,d=3$) results in the best performance (See Fig~\ref{fig1}, plate B). The performance  characteristics of the final inferred model set is shown in Table~\ref{tab1}.
+
+Importantly, our approach is both randomized and adaptive. The solution first randomly selects a model from the set of optimized model set, where each such model consists of 2 decision trees, each of depth 3. Then the test proceeds adaptively down the decision paths of these trees, as responses to individual presented items are entered by the test-taker.
+
+\begin{table}[t]
+  \centering
+  \captionN{Inferred Model Performance Characteristics}\label{tab1}
+  \begin{tabular}{|L{1in}|c|}
+    \hline
+    No. of Estimators & 2\\\hline
+    Depth of each estimator & 3 \\\hline
+    Items presented & 6 \\\hline
+    No. of tests & 240\\\hline
+    No. of items used & 189 \\\hline
+    Median AUC & 0.885 \\\hline
+    \end{tabular}
+\end{table}
+
+\section*{Software}
+All software sources are available at the Github Repository link:
+\href{https://github.com/zeroknowledgediscovery/zcad}{https://github.com/zeroknowledgediscovery/zcad}
+
+\begin{table}[t]
+  \captionN{Example Console Runs (After 6 responses, class probabilities are returned.)}\label{tab2}
+
+\begin{verbatim}
+./CAD.py 
+ Response to item 184: 1
+ Response to item 170: 2
+ Response to item 58: 2
+ Response to item 67: 3
+ Response to item 81: 5
+ Response to item 149: 4
+[[0.4140625 0.5859375]]
+
+./CAD.py 
+ Response to item 68: 4
+ Response to item 184: 3
+ Response to item 100: 5
+ Response to item 41: 2
+ Response to item 180: 4
+ Response to item 119: 4
+[[0.36842105 0.63157895]]
+
+./CAD.py 
+ Response to item 134: 1
+ Response to item 164: 3
+ Response to item 157: 5
+ Response to item 184: 2
+ Response to item 81: 4
+[[0.26666667 0.73333333]]
+
+./CAD.py 
+ Response to item 134: 1
+ Response to item 192: 2
+ Response to item 127: 3
+ Response to item 70: 4
+ Response to item 135: 5
+ Response to item 110: 3
+[[0.690625 0.309375]]
+\end{verbatim}
+
+\vspace{300pt}
+
+\end{table}
+
+\bibliographystyle{siam}
+\bibliography{ptsd}
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
