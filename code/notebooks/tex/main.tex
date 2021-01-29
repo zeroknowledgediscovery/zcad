@@ -31,11 +31,11 @@
 
  \begin{table}[!ht]
    \centering
-  \caption{ROC and Confidence Bounds}
+  \caption{AUC at 99\% Confidence}
 \input{res}
 \end{table}
 
-\def\WDT{3in}
+\def\WDT{2in}
 \begin{figure}[!ht]
 \includegraphics[width=\WDT]{Figures/sczVSall.pdf}
 \includegraphics[width=\WDT]{Figures/sczVscaff.pdf}
@@ -43,19 +43,25 @@
 \end{figure}
 
 
-\begin{tikzpicture}
+\begin{tikzpicture}[font=\normalfont\sffamily\fontsize{8}{8}\selectfont]
+\clip (-1.05in,-2.9in) rectangle (3.60in,1.1in);
+  
+\def\WDT{2in}
 \node[] (a) at (0,0) {\includegraphics[width=\WDT]{Figures/sczVSall.pdf}};
-\node[anchor=west] (b) at ([yshift=0in]a.east) {\includegraphics[width=\WDT]{Figures/sczVscaff.pdf}};
-\node[anchor=north] (c) at ([yshift=-.2in]a.south) {\includegraphics[width=\WDT]{Figures/sczsceff.pdf}};
-\node[anchor=south west] (L1) at (a.north west) {\Large a.};
-\node[anchor=south west] (L2) at (b.north west) {\Large b.};
-\node[anchor=south west] (L3) at (c.north west) {\Large c.};
+\node[anchor=west] (b) at ([xshift=0.50in]a.east) {\includegraphics[width=\WDT]{Figures/sczVscaff.pdf}};
+\node[anchor=north] (c) at ([yshift=-.3in]a.south) {\includegraphics[width=\WDT]{Figures/sczsceff.pdf}};
+\node[anchor=south west] (L1) at (a.north west) {{\Large a.} Schizophrenia vs others};
+\node[anchor=south west] (L2) at (b.north west) {{\Large b.} Schizophrenia vs Schizoaffective};
+\node[anchor=south west] (L3) at (c.north west) {{\Large c.} Schizophrenia or Schizoaffective vs others};
 
-\node[anchor=west] (T) at (c.east) {
-  \mnp{3.5in}{
+\node[anchor=north west] (T) at ($(c.north west)!(b.west)!(c.north east)$) {
+  \mnp{5in}{
 \input{res}
   }
 };
+
+\node[anchor=south west] (L4) at (T.north west) {{\Large d.} AUC at $99\%$ Confidence};
+
 \end{tikzpicture}
 
 \end{document}

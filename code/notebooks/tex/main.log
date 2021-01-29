@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.9.11)  12 OCT 2020 08:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2019.9.11)  2 NOV 2020 12:31
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1717,85 +1717,78 @@ File: ot1txtt.fd 2000/12/15 v3.1
 LaTeX Font Info:    Font shape `OT1/txtt/bx/n' in size <8.03> not available
 (Font)              Font shape `OT1/txtt/b/n' tried instead on input line 23.
  (./res.tex
-LaTeX Font Info:    Calculating math sizes for size <8.03> on input line 1.
-LaTeX Font Info:    Try loading font information for OT1+ccr on input line 1.
+LaTeX Font Info:    Try loading font information for OT1+ccr on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/concmath/ot1ccr.fd
 File: ot1ccr.fd 1999/03/10 v2.0b LaTeX font defs for Concrete math fonts
 )
-LaTeX Font Info:    Try loading font information for OML+ccm on input line 1.
+LaTeX Font Info:    Try loading font information for OML+ccm on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/concmath/omlccm.fd
 File: omlccm.fd 1999/03/10 v2.0b LaTeX font defs for Concrete math fonts
 )
-LaTeX Font Info:    Try loading font information for OMS+ccsy on input line 1.
+LaTeX Font Info:    Try loading font information for OMS+ccsy on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/concmath/omsccsy.fd
 File: omsccsy.fd 1999/03/10 v2.0b LaTeX font defs for Concrete math fonts
 )
-LaTeX Font Info:    Try loading font information for OMX+ccex on input line 1.
+LaTeX Font Info:    Try loading font information for OMX+ccex on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/concmath/omxccex.fd
 File: omxccex.fd 1999/03/10 v2.0b LaTeX font defs for Concrete math fonts
 )
 LaTeX Font Info:    External font `xccex10' loaded for size
-(Font)              <8.03> on input line 1.
+(Font)              <6> on input line 2.
 LaTeX Font Info:    External font `xccex10' loaded for size
-(Font)              <5.62097> on input line 1.
-LaTeX Font Info:    External font `xccex10' loaded for size
-(Font)              <4.015> on input line 1.
-LaTeX Font Info:    Try loading font information for U+txsya on input line 1.
+(Font)              <5> on input line 2.
+LaTeX Font Info:    Try loading font information for U+txsya on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsya.fd
 File: utxsya.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyb on input line 1.
+LaTeX Font Info:    Try loading font information for U+txsyb on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyb.fd
 File: utxsyb.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 1.
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
 File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
 )
-LaTeX Font Info:    Try loading font information for OT1+txr on input line 1.
+LaTeX Font Info:    Try loading font information for OT1+txr on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/ot1txr.fd
 File: ot1txr.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txmia on input line 1.
+LaTeX Font Info:    Try loading font information for U+txmia on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxmia.fd
 File: utxmia.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+txsyc on input line 1.
+LaTeX Font Info:    Try loading font information for U+txsyc on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/txfonts/utxsyc.fd
 File: utxsyc.fd 2000/12/15 v3.1
 )
-LaTeX Font Info:    Try loading font information for U+stmry on input line 1.
+LaTeX Font Info:    Try loading font information for U+stmry on input line 2.
 
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd))
-<Figures/sczVSall.pdf, id=34, 480.27869pt x 338.20102pt>
+<Figures/sczVSall.pdf, id=34, 511.26947pt x 420.24974pt>
 File: Figures/sczVSall.pdf Graphic file (type pdf)
 <use Figures/sczVSall.pdf>
 Package pdftex.def Info: Figures/sczVSall.pdf  used on input line 40.
-(pdftex.def)             Requested size: 216.81pt x 152.67413pt.
-<Figures/sczVscaff.pdf, id=35, 480.27869pt x 338.20102pt>
+(pdftex.def)             Requested size: 144.54pt x 118.80412pt.
+<Figures/sczVscaff.pdf, id=35, 511.26947pt x 420.24974pt>
 File: Figures/sczVscaff.pdf Graphic file (type pdf)
 <use Figures/sczVscaff.pdf>
 Package pdftex.def Info: Figures/sczVscaff.pdf  used on input line 41.
-(pdftex.def)             Requested size: 216.81pt x 152.67413pt.
-<Figures/sczsceff.pdf, id=36, 480.27869pt x 338.20102pt>
+(pdftex.def)             Requested size: 144.54pt x 118.80412pt.
+<Figures/sczsceff.pdf, id=36, 511.26947pt x 420.24974pt>
 File: Figures/sczsceff.pdf Graphic file (type pdf)
 <use Figures/sczsceff.pdf>
 Package pdftex.def Info: Figures/sczsceff.pdf  used on input line 42.
-(pdftex.def)             Requested size: 216.81pt x 152.67413pt.
-
-Underfull \hbox (badness 10000) in paragraph at lines 40--43
-[][] []
- []
+(pdftex.def)             Requested size: 144.54pt x 118.80412pt.
 
 ===== Image './Figures/External/main-figure0' is up-to-date. ======
 [1{/usr/share/texlive/texmf-dist/fonts/map/pdftex/updmap/pdftex.map} <./Figures
@@ -1807,32 +1800,36 @@ e pdfs with page group included in a single page
 
 pdfTeX warning: pdflatex (file ./Figures/sczsceff.pdf): PDF inclusion: multiple
  pdfs with page group included in a single page
->] [2 <./Figures/External/main-figure0.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 61.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 61.
+> <./Figures/External/main-figure0.pdf
+
+pdfTeX warning: pdflatex (file ./Figures/External/main-figure0.pdf): PDF inclus
+ion: multiple pdfs with page group included in a single page
+>]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 67.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 67.
  (./main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 61.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 61.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 67.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 67.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 61.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 67.
  ) 
 Here is how much of TeX's memory you used:
- 36432 strings out of 492678
- 857625 string characters out of 6133535
+ 36400 strings out of 492678
+ 857089 string characters out of 6133535
  1087113 words of memory out of 11000000
- 39582 multiletter control sequences out of 15000+600000
- 56183 words of font info for 129 fonts, out of 8000000 for 9000
+ 39555 multiletter control sequences out of 15000+600000
+ 54925 words of font info for 120 fonts, out of 8000000 for 9000
  1137 hyphenation exceptions out of 8191
  64i,11n,96p,1027b,691s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/txfonts/txbtt.pfb></usr/share/texlive/texmf-dis
 t/fonts/type1/urw/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type
 1/urw/helvetic/uhvr8a.pfb>
-Output written on main.pdf (2 pages, 671259 bytes).
+Output written on main.pdf (1 page, 668440 bytes).
 PDF statistics:
- 294 PDF objects out of 1000 (max. 8388607)
+ 265 PDF objects out of 1000 (max. 8388607)
  73 compressed objects within 1 object stream
- 4 named destinations out of 1000 (max. 500000)
+ 3 named destinations out of 1000 (max. 500000)
  141 words of extra memory for PDF output out of 10000 (max. 10000000)
 
