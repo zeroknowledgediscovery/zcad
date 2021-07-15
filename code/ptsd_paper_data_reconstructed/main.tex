@@ -1,0 +1,272 @@
+%------------------------------------
+\documentclass[onecolumn,10pt]{IEEEtran}
+\let\labelindent\relax
+\usepackage{enumitem}
+\input{preamble.tex}
+\usepackage{comment}
+\usepackage[size=normal]{subcaption}
+% \input{customdefs}
+\renewcommand{\baselinestretch}{1.05}
+\externaldocument[SI-]{SI}
+% \externaldocument[EXT-]{exfig}
+\newif\ifSHOWONE
+\SHOWONEfalse
+
+\newif\iftikzX
+\tikzXtrue
+%\tikzXfalse
+\def\jobnameX{zero}
+\newif\ifFIGS 
+\FIGSfalse  
+\FIGStrue
+\cfoot{\scriptsize\thepage}
+\lfoot{}
+\rfoot{}
+
+ 
+\begin{document}
+% #########################################
+% #########################################
+\ifFIGS
+\begin{figure}[t]
+  \tikzexternalenable
+  \tikzsetnextfilename{figdesc}
+  \def\XCOL{black}
+  \def\TEXTCOL{gray}
+  \centering
+  \def\WDT{1.750in}
+  \def\HGT{1.5in}
+  \def\SCALE{.5}
+  \def\OPC{.8}
+  \def\BLK{70}
+
+     \iftikzX
+ \input{Figures/fig}
+ \else \includegraphics[width=\textwidth]{Figures/External/figdesc}
+ \fi
+
+ \captionN{\textbf{Descriptive statistics of database.} Panel a,b shows where our patients originate from. Panel c illustrates the distribution of patient diagnostic ages, showing that risk starts increasing  from around 60 years, which match with known ADRD onset age charcateristics~\cite{owens2020screening}. Also, panel b illustrates that  the empirical risk per patient is higher for males in the Truven dataset, although there are more females with ADRD in total (See Table~\ref{tabn}), and more female patients in general in the database in the relevant age groups. The age-stratified prevalences in the Truven dataset match well with prevalence numbers reported for the US in 2020~\cite{zhao2020alzheimer}. }\label{figdesc}
+\end{figure}
+% ############################################
+% ############################################
+\else
+\refstepcounter{figure}\label{figdesc}
+\fi
+\end{document}
+% ############################################
+ % ############################################
+% ############################################
+\begin{table*}[t]
+  \centering
+
+  % \fontsize{10}{11}\selectfont
+  \input{Figures/tab1}
+\end{table*}
+% ############################################
+% ################################################
+
+\end{document}
+
+
+
+Automated analysis of a patient's historic routinely-collected health care data in medical encounters may offer a non-invasive and indeed, completely passive, inexpensive, and accessible solution, with minimal time demands,to accurately discover elevated risk of \DISEASE~\cite{wilkinson2018identifying}. The multifactorial etiologies of \DISEASE imply that numerous risk factors are associated with these syndromes~\cite{wilkinson2018identifying}, and administrative claims and hospital databases, due to their large or even vast scope, offer sufficient statistical power to discover exquisitely-detailed algorithms to pinpoint potential cases.  Notably, administrative claims and hospital databases may be especially amenable to exploration in heretofore unprecedented depth of associations of \DISEASE and comorbidities. Observational studies already have suggested that such associations encompass a large number and variety of disorders covering much of the human disease spectrum~\cite{duthie2011non}; for example, non-neuropsychiatric chronic conditions such as diabetes, hypertension, hypercholesterolemia, obesity, sleep apnea, thyroid disorders, osteoporosis, and glaucomahave been linked to \DISEASE~\cite{duthie2011non,anstey2020future}. The validated or suspected associations of \DISEASE with both ``intuitive'' categories of comorbidity, $e.g.$, neurological, psychiatric, and cardiovascular disorders, and with non-intuitive categories, $e.g.$, metabolic, endocrine, and opthalmological disorders, provide rationale for us to seek to leverage comorbid diagnoses to quantify \DISEASE risk.
+
+
+Despite extensive documentation of AD co-morbidities,   a reliable risk estimator  for  individuals | based purely on ICD code-based co-morbidity patterns without any pre-selection of diagnostic codes already known to be a AD co-morbidity |  has never been reported to our knowledge. The sparsity of individual history, and the general absence of specific  physiological disorders  that would consistently signal the eventual emergence of AD symptoms, combined with the heterogeneity of brain aging processes and \DISEASE presentation~\cite{eavani2018heterogeneity},  make such an endeavor challenging. Here we report on the development of the Zero Burden Co-morbid Risk Score (\zcor) for \DISEASE, which accurately and reliably identifies patients  up to $10$ years before contemporary documented clinical diagnosis. \zcor for \DISEASE is a \numfeatures-feature digital signature created by applying a novel stochastic learning algorithm to perform sophisticated pattern discovery regarding relationships of comorbidities with \DISEASE. In our study, the training and validation cohorts for the development of \zcor include \totalpatients\xspace unique  patients, drawn from across the United States.
+
+We make predictions 
+based on models of statistically curated patterns of diagnostic code sequences, automatically learned from  sufficiently large databases of electronic health records (EHR), without any preselection of codes, and without any demands of specific blood-work, laboratory tests, familial history or other patient specific information that might not be generally available at the point of care, and yet  achieve an out-of-sample AUC exceeding  $87\%$ for  either sex (predictions for one year earlier), and $\approx 80\%$ (prediction made a decade earlier).
+
+
+Importantly, our predictive performance matches the highest AUC achieved by MOCA when making predictions just before a clinical diagnosis ($\geqq 91\%$, see Table.~\ref{tabpast}). The underlying  machine learning technology in \zcor is  fundamentally novel, designed to address  specific issues in  sparse, noisy categorical diagnostic sequences, with demonstrable non-trivial  performance boost over standard tools used in recent studies, mainly arising from our ability to account for incipient longitudinal patterns in medical history beyond simply the absence/presence of a priori fixed risk factors.  Additionally,  \zcor for \DISEASE is sex stratified, with separate signatures generated for males and females. Appreciation is growing of sex/gender as a key contributor to the considerable phenotypic heterogeneity of \DISEASE~\cite{ferretti2020sex}, and machine learning-based analyses in the literature suggest that males and females may have different risk factors for dementia~\cite{choi2020gender}.
+
+
+
+The effectiveness of diverse cognitive assessment tools, often along with demographic and specific medical diagnoses in the past and specific blood work results, has been recently evaluated over a range of recent studies~\cite{tang2015current}, achieving AUCs between 55\%-89\%, sometimes for diagnoses $10-20$ years into the future~\cite{chary2013short,ohara2011apolipoprotein}.
+Nevertheless, the substantial resource burden in such tests - often requiring detailed neurological, cognitive and psychiatric consults -  limits their applicability  at the point of care, and were never conceived of as to be used as universal screening tools at the primary care setting.
+
+In the context of known \DISEASE co-morbidities, predictability of eventual dementia  under the presence of specific high risk conditions such as type 2 diabetes has  been investigated~\cite{exalto2013risk,reitz2010summary,barnes2014development}. However, the complex pathobiology of \DISEASE and its heterogeneous presentation implies that patients might develop \DISEASE while having none or very few of the  well-known risk factors. Lacking the known flags, such a low-risk cohort is  at a much higher risk of missed or late diagnosis of \DISEASE.  We show that our tool maintains high predictive performance in the low-risk patient groups, which to our knowledge, has rarely been investigated in the literature.
+
+
+Recently advanced analytics and machine learning for predictive diagnosis has emerged to be a promising new
+tool~\cite{miotto2016deep}, although widespread adoption in the clinical workflow has been limited~\cite{davenport2019potential}. In the context of \DISEASE, advances~\cite{eavani2018heterogeneity} with  data-driven analytics have typically dealt with  brain imaging data, which, while effective, and backed by well-understood mechanistic models, do not alleviate the  barrier to universal adoption. %
+
+Thus, a key contribution of this study is to potentially alleviate the hurdle of universal testing of the older population. The necessity of such tools has been well-recognized~\cite{boustani2020passive,park2020machine}, with recent attempts at developing EHR based digital signatures  to assess future \DISEASE risk. 
+While  \zcor is one of three digital signatures for \DISEASE reported since 2020~\cite{boustani2020passive,park2020machine}, our results are significantly better. More importantly,  Boustani $\etal$ used both structured and unstructured data including clinical notes processed for specific AD related keywords, and and Park $\etal$  makes use of laboratory test results ($e.g.$ blood hemoglobin) which might not be available for every patient at the point of care;  in contrast, \zcor exclusively uses data already present in patient records. Thus, our approach uses only available data, which would typically vary from one patient to another, with no a priori fixed ``demand'' on any specific item of clinical, familial, demographic or lifestyle information, making \zcor applicable almost universally, passively, and nearly instantaneously  at the point of care.
+
+\section*{Materials and Methods}
+\subsection*{Data Source \& Patient Selection}
+%
+Our patient data  comes from  the Truven Health Analytics MarketScan\textsuperscript{\textregistered} Commercial Claims and Encounters Database for the years 2003-2018~\cite{hansen2017truven} (referred to  as the Truven dataset). This US national database merges  data contributed by over 150 insurance carriers and large self-insurance companies,  and comprises over  seven billion time-stamped diagnosis  codes. The entire database tracks over  \numTruven patients for 1 to 15 years,  reflecting a substantial cross-section of the US population. We select our cohort(s) from the Truven dataset in accordance with the inclusion/exclusion criteria described in  Table~\ref{tabpreex}, ensuring that selected patients have at least  three years of  medical history recorded in the dataset. The geographical distribution of the patients in our selected cohort(s) is illustrated in Fig.~\ref{figdesc}a-b. Fig.~\ref{figdesc}c illustrates the age distribution at the time of \DISEASE diagnosis, which is consistent with the reported  onset age characteristics for \DISEASE (mid-sixties~\cite{owens2020screening}). We also note that cumulative risk of onset actually increases with age, which is computed as the number of \DISEASE cases normalized by the total  number of patients at the same age, as shown in Fig.~\ref{figdesc}c.
+
+
+Predicting  future \DISEASE diagnosis   is a  binary classification problem: we classify time-stamped sequences of diagnostic codes  into \treatment and \control categories, where the ``\treatment'' category refers to patients  diagnosed with \DISEASE at  $\PREDWINDOW$ year from the point of screening (one or more codes mapping to \DISEASE appears in record shown in Table~\ref{tabtarget}, referred to as the Dx problem in Fig.~\ref{fig0} and Tables~\ref{tabres} and \ref{tabres2}) or are identified by either such codes or prescription of  AD related medication~\cite{FDAAppro97:online,park2020machine} (Donepezil, Galantamine, Memantine or Rivastigmine, referred to as the Dx/Rx problem in Table~\ref{tabres} and \ref{tabres2}). We also consider  earlier screening up to $M$ years before the actual diagnosis, and  we investigate values of $M=0,\cdots,10$, $i.e.$, predicting \DISEASE immediately before a clinical diagnosis to up to a decade in the future. The control cohort comprises patients who never develop AD, $i.e.$, do not have \DISEASE target codes and are ever prescribed AD related medication, which due to our requirement of minimum 3 years of medical history of record implies the absense of a diagnosis for at least $M+2$ years in the future from teh point of screening. We base our predictions on the past $\INFWINDOW$ years of diagnostic history. Overall we analyze $n=\totalpatients$ patients, with $\totalnpos$ patients in the \treatment group and $\totalnneg$ patients in the \control group (See CONSORT diagram in Fig.~\ref{fig0}c), considering approximately  42 million diagnostic codes, with over 46K unique codes in total for both sexes.
+
+We do not pre-select any diagnostic   code based on its  suspected comorbidity with \DISEASE. To investigate if our  performance changes substantially for ``high risk'' patients identified  based on known co-morbidities including  obesity, type II diabetes mellitus, hypertension, atherosclerosis, atrial fibrillation,  dyslipidemia, depression, alcohol abuse, and pneumonia, we   separately consider high risk and  low risk sub-cohorts. The high risk sub-cohort comprises patients with one or more of the diagnoses enumerated in SI-Table~\ref{SI-tabhirisk}, which identify the top known co-morbidities~\cite{tortajada2020prevalence,duthie2011non}.  The low risk sub-cohort comprises  patients who are not at high risk as specified by  the previous condition.
+Results in the low risk sub-cohort is of particular significance; these patients are at a higher risk of  missed or delayed diagnosis.
+
+\subsection*{Modeling \& Prediction}
+
+% ############################################
+\begin{table*}[!ht]
+  \centering
+  \captionN{Feature Definitions (Total number of features used: \numfeatures)}\label{tabfeatures}
+  \fontsize{8}{7}\selectfont
+  \input{Figures/features.tex}
+
+   {  \flushleft
+
+    \mnp{\textwidth}{
+      $^\star$feature: ICD disease categories, or sets of diagnostic codes tracked 
+      \vskip .1em
+      % 
+      $^\dag\Delta$: Sequence Likelihood Defect (See Methods) 
+      \vskip .1em
+      % 
+      $^\ddag$ neg loglikelihood: loglikelhood of observed sequence  generated by  model inferred from \control (See Methods)
+      \vskip .1em
+      % 
+      $^\#$ pos loglikelihood: loglikelhood of observed sequence  generated by  model inferred from \treatment (See Methods)
+    }
+   }
+\end{table*}
+% ############################################
+%\clearpage
+
+\begin{table}[t]
+  \mnp{4.5in}{
+    \caption{ADRD ICD diagnostic codes}\label{tabtarget}
+    
+    \fontsize{8}{8}\selectfont
+    \input{Figures/target_probable}
+  }
+  % 
+  \mnp{2in}{
+    \caption{ADRD common prescriptions active ingredients}\label{tabdrugadrd}
+    \fontsize{8}{8}\selectfont
+
+    \input{Figures/targetrx_probable}
+  }
+\end{table}
+% ############################################
+
+
+
+The significant diversity of diagnostic codes, along with the sparsity of codes per patient (approximately one entry every 100 steps on the diagnostic time series, see below)   makes this a difficult learning problem. We proceed by  partitioning the  disease spectrum into \DXphn\xspace broad  categories, $e.g.$ infectious diseases, immunologic disorders, and endocrinal disorders (See SI Tab.~\ref{SI-tabicd}  for a detailed enumeration of these categories). Some of these categories comprises a relatively large number of diagnostic codes aligning roughly with the  categories defined within the ICD framework~\cite{world1988international}.    Each of the diagnostic categories yield a single time series over weeks (each week being identified as having a value '0' for no code corresponding to the diagnostic category, or  '1' if some code is present, and '2' if a diagnostic code from any of the other categories is present). We have \avgNumDX diagnostic codes  per broad category per patient per week, implying that these event streams have one  entry specific to the represented set of disorders every 100 steps on average.
+
+We refer to the individual diagnostic categories  as a  phenotype in the sequel, since they are  observable characteristics of the patients.  Once we have defined  these diagnosis phenotypes, each patient is  represented by $\DXphn$  sparse  stochastic time series of  events, which  are  compressed into specialized Hidden Markov Models known as Probabilistic Finite Automata~\cite{CR08,CL12g}. These models are inferred separately for each phenotype,  for each sex, and for the control and the \treatment cohorts,  to identify  the distinctive average patterns  emerging at the population level. Thus, we infer 
+$\DXphn\times 2 \times 2  = \the\numexpr  \DXphn  *2 *2  \relax$  PFSA models in total in this study. Our inference algorithm (See Supplementary Text, Section~\ref{SI-sec:PFSA}))  for these models do not presuppose a fixed structure, and is able to work with non-synchronized and variable length data streams. Variation in the structure and parameters of these inferred models between the \treatment and \control groups  delineate the estimated risk of an \DISEASE diagnosis at the population level. Given these models, and  the history of a specific patient, we can then quantify the likelihood of this patient's particular history being generated by the \control PFSA models as opposed to the \treatment models. We refer to this likelihood difference as the sequence likelihood defect (SLD)~\cite{huang2019data}, which is the one of the key informative features in our approach. The SLD is a  novel concept, involving the generalization of the notion of KL divergence~\cite{cover} between probability distributions to a generalized divergence between possibly non-iid stochastic processes (See Supplementary Tex, Section~\ref{SI-step2}). SLD-based features allow the \zcor measure to factor in complex longitudinal ($i.e.$ temporal)  patterns beyond simply the presence or absence of comorbidities in patient histories.
+
+In addition to the phenotype specific specialized Markov models described above, we use a range of engineered features that reflect various aspects of the patient-specific diagnostic histories, referred to as the ``sequence features'', ``p-scores'', and ``rare scores''. The sequence features  include the ratio of number of weeks with the codes of a given phenotype to the total number of
+weeks in sequence, the ratio of number of weeks with the codes of a given phenotype to the number of weeks with any diagnosis code recorded and the length of the longest uninterrupted subsequence of weeks with the codes of a given phenotype (See Table~\ref{tabfeatures} for complete list of such features). The p-scores and the rare scores encode prevalence characteristics of individual diagnostic codes (see Supplementary text Section~\ref{SI-sec:pipeline}).  Ultimately, we compute a total of $\numfeatures$  features    for each patient, which is then used to train a network of standard gradient boosting classifiers~\cite{ke2017lightgbm} aiming to  map   individual patients  to a raw risk score. We randomly choose  $75\%$ of our patients for training with the rest  held-out as a validation set. More details of the predictive pipeline are given in the Supplementray text, Section~\ref{SI-sec:pipeline}.
+
+\subsection*{Raw Risk \& Relative Risk}
+Our predictive pipeline produces a continuous estimate of the raw risk score of an \DISEASE diagnosis in future. Thus, our raw risk estimate is a continuous number, and  we must choose  a decision threshold to make crisp predictions,  $i.e.$, if the raw risk is greater than this calibrated threshold then the individual patient is predicted to be in the \treatment category. In this study, we select this threshold by maximizing the $F_1$-score, defined as the harmonic mean of sensitivity and specificity, to make a   balanced trade-off between Type 1 and Type 2 errors. The \textit{relative risk} is then defined as the ratio of the raw  risk to the  decision threshold, and a value  $>1$  indicates  a predicted  future \DISEASE diagnosis.
+
+\subsection*{Performance Measurement}
+We measure our performance using  standard metrics including the Area Under the receiver-operating characteristic curve (AUC), sensitivity, specificity and the Positive Predictive Value (PPV). We also report accuracy (acc, See Tables~\ref{tabres} and \ref{tabres2}), which is the probability  of a  correct prediction (\treatment or \control), and variation of AUC for predicting a \DISEASE further into future upto 10 years (See Table~\ref{tabpast}).
+
+\subsection*{Feature Importance \& Comorbidity Spectra}
+Beyond the demonstrated predictive performance (see Results), calculation of the \pcor score offers  insights into the comorbid associations of \DISEASE that might actually have predictive value. Estimating the relative importance of the features used is crucial for  sanity checks, as well as  for insights into the underlying causal mechanisms. We compute the relative importance of the features  by estimating the  mean change in the raw risk via random perturbation of a particular feature: this is the ``feature importance'' shown in Fig.~\ref{fig0}c for the different diagnostic categories.  which  illustrates that respiratory disorders are the most important diagnostic category modulating the \pcor score. 
+
+Importantly, all of  our features are  based on data already  available in the past  medical records. We do not demand results from specific tests, or look for specific demographic, bio-molecular, physiological and other parameters; \textit{we use what we get} in the diagnostic history of patients, which presents un-structured sequence of labels pertaining to the ICD and the prescription codes, and is typically prone to noise, coding errors and sparsity. Our ability to effectively work with uncurated data and  achieve high out-of-sample predictive performance   showcases the  immediate clinical  applicability with zero additional burden to patients and providers.
+
+In addition to the patient-specific predictions, we compute
+the statistically significant log-odds ratio of specific ICD codes occurring in the true positive vs the true negative patient sets. We call these the comorbidity spectra (See Fig.~\ref{figspecA}). Removing the false positives and the false negatives from consideration in computing the comorbidity spectra allows us to uncover patterns | at the level of individual codes | that are most representative of the patient risk. Importantly, the comorbidity spectra are based on individual codes, as opposed to the feature importances shown in Fig.~\ref{fig0}c, which consider aggregated impact of all features that are based on the broad disease categories. Every disorder listed in the co-morbid spectra obviously do not all appear in a single patient, but the idea here is that the codes with high log-odds ratio are  significantly more likely in \treatment cohort. The comorbidity  spectra, so named because of disease-category specific  color coding, offers unique  insight into the predictive   co-morbidity burden of \DISEASE.
+
+\section*{Results}
+% ################################################
+\ifFIGS
+\begin{figure*}[t]
+  \tikzexternalenable
+  \tikzsetnextfilename{perfA}
+
+  \centering
+
+    \iftikzX
+  \input{Figures/figpred1__}
+   \else \includegraphics[width=.935\textwidth]{Figures/External/perfA}
+  \fi
+  \captionN{\textbf{Predictive performance of \zcor for \DISEASE diagnosis 1 year in the  future.} Panels a and b show the out-of-sample ROC and precision-recall curves for diagnosis 1 year from the point of screening. We achieve AUCs $> 88\%$ for male and $>86\%$ for females in the age group 50+, for the diagnostic criteria based on ICD codes (See description fo diagnostic criteria considered in Table~\ref{tabpreex}), with sensitivities at 58\% (females) and 54\% (females) at $95\%$ specificity. See Tables~\ref{tabres} and \ref{tabres2} for performance within 65+ cohort, and within the low-risk and high-risk cohorts in each age strata. Panel c shows the top 20 comorbidity categories sorted in the order of inferred importance in estimating risk, where categories for mental and cognitive disorders  have been removed to highlight the role of other physiological co-morbidities.  Importantly, the comorbidities modulate risk differentially by sex, although the patterns are broadly similar, $e.g.$, metabolic, cardiovascular, opthalmological, ischemic categories  appear  in both males and females, with slightly altered ranking. Infections and immunologic disorders appear with high importance.
+  }\label{fig0}
+\end{figure*}
+% ############################################
+% ############################################
+\else
+\refstepcounter{figure}\label{fig0}
+\fi
+% ############################################
+
+In this study we demonstrate three key results: 1) high out-of-sample predictive performance for identifying a future \DISEASE diagnosis via leveraging subtle comorbidity patterns recorded in the past medical history of individual patients.  2) the ability of our models to  maintain high predictive performance for an  eventual diagnosis further into future, upto 10 years. And 3) ability to perform effectively for both low and high-risk cohorts, where the high-risk cohort comprises patients with commonly surveilled for \DISEASE co-morbidities.
+
+Our main prediction results are presented in Fig.~\ref{fig0}a-b, which illustrate the ROC and the precision-recall curves respectively (for screening one year before current diagnosis), shown separately for males and females. As noted in the legend of these panels, our out-of-sample predictive performance is  $>88\%$ AUC for females (50+) and $>86\%$ for males (50+), with $>50\%$ sensitivity at $95\%$ specificity ($53\%$ for males and $57\%$ for females). At $99\%$ specificity, we obtain a positive predictive value (PPV) of $42\%$ for females (50+) and $40-41\%$ for males (50+) respectively. At these values we obtain an accuracy 
+of $\approx 96-97\%$ (See Table~\ref{tabres}) which indicates the overall fraction of correct predictions. The PPV achieved by \zcor at maximum accuracy is $54-55\%$ for females (50+) and $51-53\%$ for males (50+), with a corresponding Negative Predictive Value (NPV) of $97\%$. The corresponding results for age 65+ is tabulated in Table~\ref{tabres2}.
+
+Thus, to summarize: our predictive pipeline detects about 53-57  out of every 100 patients who are going to have a diagnosis in 1 year, if we operate at $95\%$ specificity. If we wish to operate at the higher specificity of $99\%$, then out of 100 positive flags we have about 41-42 true positives.  The accuracy metric indicates that  we are correctly identify  the risk status (\treatment or \control) for approximately  96-97 out of 100 patients, irrespective of sex, highlighting the potentially high clinical significance of the \zcor score.
+
+From  the inferred  relative importance of the  features (See Fig.~\ref{fig0}d-e), we conclude, that metabolic and ischemic  diseases, cardiovascular abnormalities, sleep disorders, nervous system disorders,  and diseases of the eye are important modulators of risk. Infections also feature  in the top 20 co-morbidities shown in these panels. Importantly while there are sex differences, the overall pattern of the relative importance ranking remains substantially invariant between males and females. With some exceptions, many of these patterns are not particularly surprising; the contribution of this study is to bring them  together systematically to realize an  accurate risk estimate via the \zcor score.
+
+\input{figuresandtables}
+
+
+Our predictive performance expectedly degrades as we predict earlier (See Table~\ref{tabpast}, and the inset figure). Importantly however, the degradation is slow enough that we can use \zcor with acceptable reliability to predict diagnoses upto 10 years into the future, and significantly outperforms reported results in the literature. 
+
+While these results demonstrate the importance of the  diverse features used in our approach, understanding the seat of this predictive power is important. The feature importances discussed earlier (Fig.~\ref{fig0}d-e) identify the relative impact of broad disease categories. Importantly, to evaluate the feature importance of a specific diagnostic category,  we sum the importance of all  features  based on that  category, not just the presence or absence of individual diagnoses. The latter aspect, $i.e.$, the risk burden from the presence of specific codes,  is investigated via the co-morbidity spectra for out-of-sample patients, shown in Figs.~\ref{figspecA} separately for males and females.  We find that the important co-morbidities are diverse, vary with the sex of the patients, but is clearly dominated by mental disorders,  circulatory disorders, injuries and poisoning, and a range of disorders categorized broadly as ill-defined symptoms. Again, while many of these patterns  are expected at the population level, design of the personalized \zcor score is not immediately obvious.
+
+Since \DISEASE co-morbidities have been investigated in the literature, a relevant question here is if our performance is dramatically better in sub-cohorts defined by the presence of these high risk diagnoses in the past (defined in SI-Table~\ref{SI-tabhirisk}). The results are tabulated in Table~\ref{tabres}, showing that our performance in the high risk sub-cohort is more or less comparable  with full cohort performance. The AUCs achieved for the low risk cohort is somewhat lower ($> 81\%$ for males 50+ and $>83\%$ for females 50+ respectively), albeit  high enough to be clinically effective. Thus, even within the low risk patients, we have a maximum PPV of $62-68\%$, and a sensitivity of $54-59\%$ at specificity of $95\%$ for 50+ patients who are going to have a diagnosis in 1 year (See Tables~\ref{tabres} and \ref{tabres2}).
+
+\section*{Discussion }
+
+In this study we  describe the development and validation of the \zcor automated digital screening tool for \DISEASE, using a large US commercial claims database. In both men and women $\geqq 50$ years old  (n=\num{\malesTruven}\xspace and  n=\num{\femalesTruven}\xspace respectively), \zcor  accurately preempts \DISEASE  cases up to 10 years before a clinical diagnosis is first documented.
+
+The broad categories of co-morbidities that emerge to be important in our analysis is shown in Fig.~\ref{fig0}c, which include metabolic, cardiovascular, ischemic, opthalmogical, and sleep disorders. Diseases of the nervous system, unrelated to \DISEASE, infections, immunologic disorders also appear in the list of top risk-modulating features. Importantly, the comorbidities modulate risk differentially by sex as shown in the subpanels of Fig.~\ref{fig0}c, although the patterns are broadly similar,  appearing in both males and females, with slightly altered ranking.
+
+Focusing on the presence or absence  individual diagnostic codes modulating \DISEASE risk in teh co-morbidity spectra shown in Figs.~\ref{figspecA} and \ref{figspecB}, we note that circulatory disorders are generally over-represented, along with injuries, and conditions related to age-related cognitive decline. Importantly, the co-morbidity spectra does not imply that these codes have high prevalence in the \treatment cohorts, but that appearance of these individual codes increases the risk burden in individual patients. In that light, many of these patterns are not surprising: AD is a amnestic syndrome, injuries might indicate neuropathies from known AD co-morbidities such as diabetes or stroke,  and  cerebrovascular diseases might signal  vascular dementia. Among other prominent codes in the spectra, ataxia and psychiatric signs were recently associated with specific biomarkers implicated in autosomal dominant early onset Alzheimer's disease~\cite{anheim2007ataxic,piccini2007association}. Appearance of some codes are more surprising, $e.g.$  dysphagia or swallowing  impairment  is usually noted in the late stages of AD. However, recent studies have documented  changes in cortical control of swallowing  beginning before dysphagia becomes apparent in dementia patients~\cite{humbert2010early,kai2015relationship}.
+
+Thus the
+most important illness categories we find to be associated with \DISEASE in either sex align with  suspected or  documented links in  statistical~\cite{choi2020gender,boustani2020passive,park2020machine} and observational studies~\cite{duthie2011non,anstey2020future}, lending credence to \zcor rationale and accuracy. Also lending such credence is the score's incorporation, via sex-stratification, of differences between males and females in \DISEASE risk factors, natural history, and symptoms~\cite{ferretti2020sex,choi2020gender,gannon2019sex,kim2019sex,elbejjani2015depression,hua2010sex,irvine2012greater}.
+
+We find that with increasing patient age it become more difficult to distinguish age related cognitive decline from \DISEASE. This is reflected in the decreasing out-of-sample AUC with age (See SI-Fig.~\ref{SI-figageauc}), suggesting that comorbidity footprints associated with \DISEASE  have confounding overlaps with conditions that arise more frequently as patients get older.
+
+Notably, because beyond the patient's sex, \zcor considers only diagnostic data already in his/her electronic medical record, and because \zcor is designed to operate  on existing information technology infrastructure and electronic healthcare systems, the digital signature operates non-invasively, inexpensively, and nearly instantaneously, and is potentially very widely, if not universally accessible. \zcor encapsulates sophisticated, automated, fully data-driven pattern discovery of cormorbidities as \DISEASE risk factors, weighing \numfeatures features related to the incidence, timing, and sequence of individual diagnostic codes, with stratification by sex. Hence in everyday practice, \zcor would add the novel dimensions of comorbidity and sex to supplement the other demographic, neuropsychological, functional, biofluid measurement, and imaging variables currently informing assessment of patients' likelihood of having or developing \DISEASE.
+
+To our knowledge, \zcor is one of three digital signatures for \DISEASE reported since 2020, joining those of Boustani $\etal$, developed utilizing data from the Indiana Network for Patient Care~\cite{boustani2020passive}, and of Park $\etal$, developed utilizing data from the Korean National Health Insurance Service~\cite{park2020machine}. Although the respective reported prognostic timeframes are not fully comparable, our digital signature appeared to achieve the best performance of the three (See Table~\ref{tabpast} inset, and Tables~\ref{tabpark} and \ref{tabboust}).
+Notably, the AUC of \zcor for \DISEASE at 10 years before documented diagnosis surpassed the AUCs of the Boustani $\etal$~\cite{boustani2020passive} signature for the 1-10 year, 3-10 year, or 5-10 year before diagnosis timeframes by 6.5\%, 11.9\% and 17.8\% respectively, while leveraging diagnostic histories of 1,400\% more patients ($\approx 50$K vs $\approx 700$K for \zcor). Also  for each prediction  timepoint made 0 through 4 years before documented diagnosis, the AUCs of \zcor exceeded those of the Park $\etal$~\cite{park2020machine} signature by 2-7\% (0 year), 12.9-16.6\% (1 year), 18.8-25.8\% (2 years), 26.4-33.3\% (3 years) and 18.6-26.5\% (4 years), while using 1,750\% more patients ($\approx$ 40K vs $\approx$ 700K for \zcor).
+
+A number of methodological differences  contribute to these respective performances. First, \zcor uses sophisticated pattern discovery on patient history, and is not limited by known risk factors and co-morbidities, allowing for high performance on low-risk and high risk cohorts alike. More importantly, our new stochastic inference algorithms are designed to leverage longitudinal patterns, and are not limited to using indicator variables, $i.e.$., simply the presence or absence of specific historical codes. Thus we are able to substantially leverage the emergent dependencies and temporal ordering of patterns emergent across the human disease spectrum.
+
+Additionally, in contrast to the other signatures, \zcor for \DISEASE was stratified by sex, and as noted, our work and that of others~\cite{choi2020gender} using ``data mining'' suggest that indeed, \DISEASE risk factors differ appreciably in males versus females. Finally, our algorithm was derived using a cohort roughly 10-18-fold larger than those of Boustani $\etal$ or Park $\etal$ (729,018 versus 40,736 and  71,466 respectively). In other words, our pattern discovery could capitalize on magnitudes larger quantities of data.
+
+Beyond raw performance metrics, \zcor maximally addresses the barrier to universal testing. Unlike that of Boustani $\etal$, (but like that of Park $\etal$), our algorithm was completely data-driven; instead, the Indiana investigators used expert opinion-generated variables in the first phase of developing their digital signature. Also, unlike Boustani $\etal$ (but like Park $\etal$), we considered only structured data, $i.e.$, ICD codes, and not clinical notes. While clinical notes might reveal substantially more information, such insights relevant to \DISEASE might not be available before a neurology consult. And unlike Park $\etal$, we do not use results from laboratory tests such as blood hemoglobin levels, which also might not be available for every patient in primary care. Thus, unlike those of our conterparts, our analysis weighed only comorbidities and sex, not other demographic factors, treatment-related factors, or testing-related indicators ($e.g.$, race, medication, or laboratory results). We chose to use only structured data on comorbidity, as well as sex, in the interest of optimizing availability of the information in, and hence, scalability to, everyday practice. Importantly, inclusion of prescription information in our algorithm appeared not to improve performance (data not shown).
+
+We envision three main potential applications of \zcor for \DISEASE. First, the score can serve in primary care or specialist settings ($e.g.$, neurology, gerontology) as a screening tool for future incident overt cases, with the potential diagnostic, therapeutic, psychosocial, caregiver-related, and research benefits noted in the introduction to this paper. \zcor could, for example, be routinely deployed, alone or along with a brief, validated neuropsychological instrument, as recommended by the American Academy of Neurology~\cite{Practice73:online}, in the cognitive screening mandated since 2011 as part of the Medicare annual wellness visit~\cite{owens2020screening}. Alternatively, especially given the variable clinical natural history of such patients~\cite{belleville2017neuropsychological}, \zcor could be employed in individuals with subjective memory decline but largely-intact cognition and function, or in those with incipient mild cognitive impairment, $e.g.$, worsening but still personally-appropriate serial neuropsychological test scores, who have not undergone biofluid or imaging assessment for \DISEASE-related or other dementia-related pathology. Notably, from pharmacoeconomic, practical, and psychosocial standpoints, use of \zcor for ``long-range'' clinical prognostication may be compatible with the up-to-decades-long, pre-clinical progression of beta-amyloid and tau neuropathology in \DISEASE: even 10 years before overt cognitive impairment, biofluid testing or imaging performed due to \zcor high-risk status is likely to be informative~\cite{jack2018nia}, and the \zcor classification, actionable.
+A second potential \zcor application could be screening for undiagnosed prevalent cases of \DISEASE in primary care settings. Considering the estimated 45\%–80\% of dementia cases in older adults that go undiagnosed in the US~\cite{fowler2015older}, availability of a non-invasive, inexpensive, near-instantaneous, and almost universally-accessible tool could revolutionize detection of such patients.
+Third, \zcor could be applied in scientific research regarding \DISEASE natural history and prevention. Beyond enrichment of trials of prophylactic interventions against cognitive impairment, \zcor opens intriguing avenues of investigation, $e.g.$, examination of the roles of previously-underrecognized comorbidity classes with important associations with \DISEASE, $e.g.$, musculoskeletal disorders in males,  respiratory infections in females, reproductive or ophthalmological disorders in both sexes. More precise understanding of the particular diseases that indeed are associated with \DISEASE will facilitate assessment of intriguing hypotheses such as inflammation serving as a key link between comorbidities and \DISEASE genetic features and phenotype~\cite{newcombe2018inflammation}.
+
+
+Strengths and limitations of the present work merit consideration. Our central contribution in this study is  the development of an accurate, practical, long-term screening tool capitalizing on and systematizing arguably underutilized dimensions of \DISEASE assessment, namely, comorbidities and sex~\cite{ferretti2020sex,anstey2020future}. Our key limitation is arises from potential diagnostic miscodings,  exacerbated by the current  imprecision in Alzheimer's-related nomenclature~\cite{jack2018nia}. Coupled with the high prevalence of undiagnosed dementia, mis-coding could lead to our \DISEASE signature deriving from data of only a fraction, albeit a substantial fraction, of our true cases. This situation might pose a particular peril under our Dx target definition considering only diagnostic codes, and not prescriptions of anti-dementia medication (as in the Dx/Rx target definition). Mitigating this concern is the vast size of our control groups (n=\num{\femalesTruvencontrol} females, n=\num{\malesTruvencontrol} males) imply that ``non-signal'' from large numbers of ``true controls'' is likely to overwhelm ``buried \DISEASE signal'' from ``false controls''. An additional possible concern related to mis-coding would be inclusion of non-\DISEASE dementia cases among the \DISEASE group. Arguably mitigating this concern somewhat is the ``mixed'' picture of the dementia afflicting many patients with \DISEASE~\cite{arvanitakis2019diagnosis,jack2018nia}.  The mixed profile would make characteristics of patients with non-\DISEASE cognitive impairment also pertinent to many patients with the target condition. The performance of \zcor  might be further enhanced with the  inclusion of treatment-related factors, $e.g.$, medications, along with comorbidities. As noted, however, using only diagnostic codes may increase the availability of data inputs for \zcor in everyday practice, and hence the tool's scalability to and generalizability to routine settings. Moreover, comorbidity codes may be viewed to at least some extent as surrogates capturing the effects of medications that might influence Alzheimer neuropathology, $e.g.$, statins or anti-diabetic agents, at the same time that they capture the effects of the comorbidities themselves.
+
+Attempts at early diagnosis of \DISEASE with sophisticated analytics raises some ethical concerns.
+In particular, early detection of progressive, not-yet-well-manageable brain disorders that have major effects on capacity, autonomy, and healthcare and other resource utilization, poses potential risks stemming from the possibility of  stigmatization and discrimination~\cite{ahlgrim2019prodromes}.  It will be necessary to further explore these and other potential harms of early recognition of Alzheimer cognitive impairment, and to seek their amelioration through legal and public health policy changes~\cite{owens2020screening,ahlgrim2019prodromes}.
+
+Moving forward, we will focus on: 1) prospective validation of \zcor; 2) assessment of the effects of \zcor use on patient and caregive quality-of-life, patient cognition and function, and healthcare utilization; 3) correlation with \DISEASE clinical and neuropathological biomarkers such as neuropsychological and functional test results and biofluid and imaging findings related to beta-amyloid, tau, and neurodegeneration; 4) comparison of \zcor prospective performance in different racial groups and ethnicities, including examination of the signature's ability to reduce disparities in the rate of diagnosis.
+
+
+
+
+\section*{Conclusion } We develop and validate \zcor for \DISEASE, a screening tool capable of detecting with high accuracy patients with Alzheimer cognitive impairment as long as 10 years before an \DISEASE diagnosis is documented in current clinical practice. Discovering sex-stratified comorbid patterns in a systematic and automated fashion, \zcor may provide clinicians and researchers with the means to incorporate under-utilized dimensions into \DISEASE risk assessment. Thus, \zcor  opens potentially new avenues in  identification of and intervention against cognitive impairment, in  neurocognitive research, and in designing  effective caregiver support. \zcor  supplements the current protocols for  neuropsychological and functional testing, biofluid measurement and imaging, that  form the mainstays of dementia diagnosis and prognostication. In contrast to  many recently proposed screening approaches, \zcor is designed to run on contemporary information technology infrastructure, and can operate inexpensively and nearly instantaneously at the point of care with no specific data demands.  Hence \zcor may be deployed as a routine screening tool, and prove useful to  primary care practitioners, gerontologists, neurologists, psychiatrists, and psychologists alike, to effectively screen for \DISEASE in middle-aged or elderly patients. The impact of  \zcor on the accuracy and speed of diagnosis, on health care resource utilization, and eventually, on patient and caregiver outcomes, warrant prospective study. 
+
+
+
+%\clearpage
+% ############################################
+
+
+   
+\bibliographystyle{naturemag}
+\bibliography{ad,BibLib1}
+
+\end{document}
+
+
+% LocalWords:  neurodegenerative

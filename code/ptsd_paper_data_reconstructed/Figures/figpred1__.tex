@@ -1,0 +1,459 @@
+\begin{tikzpicture}[font=\bf\sffamily\fontsize{10}{10}\selectfont]
+  \def\TEXTCOL{gray}
+  
+  % defining the new dimensions and parameters
+  \newlength{\hatchspread}
+  \newlength{\hatchthickness}
+  \newlength{\hatchshift}
+  \newcommand{\hatchcolor}{}
+  % declaring the keys in tikz
+  \makeatletter
+  \tikzset{hatchspread/.code={\setlength{\hatchspread}{#1}},
+    hatchthickness/.code={\setlength{\hatchthickness}{#1}},
+    hatchshift/.code={\setlength{\hatchshift}{#1}},% must be >= 0
+    hatchcolor/.code={\renewcommand{\hatchcolor}{#1}}}
+  % setting the default values
+  \tikzset{hatchspread=3pt,
+    hatchthickness=0.40pt,
+    hatchshift=0pt,% must be >= 0
+    hatchcolor=black}
+  % declaring the pattern
+  \pgfdeclarepatternformonly[\hatchspread,\hatchthickness,\hatchshift,\hatchcolor]% variables
+  {custom north west lines}% name
+  {\pgfqpoint{\dimexpr-2\hatchthickness}{\dimexpr-2\hatchthickness}}% lower left corner
+  {\pgfqpoint{\dimexpr\hatchspread+2\hatchthickness}{\dimexpr\hatchspread+2\hatchthickness}}% upper right corner
+  {\pgfqpoint{\dimexpr\hatchspread}{\dimexpr\hatchspread}}% tile size
+  {% shape description
+    \pgfsetlinewidth{\hatchthickness}
+    \pgfpathmoveto{\pgfqpoint{0pt}{\dimexpr\hatchspread+\hatchshift}}
+    \pgfpathlineto{\pgfqpoint{\dimexpr\hatchspread+0.15pt+\hatchshift}{-0.15pt}}
+    \ifdim \hatchshift > 0pt
+    \pgfpathmoveto{\pgfqpoint{0pt}{\hatchshift}}
+    \pgfpathlineto{\pgfqpoint{\dimexpr0.15pt+\hatchshift}{-0.15pt}}
+    \fi
+    \pgfsetstrokecolor{\hatchcolor}
+    % \pgfsetdash{{1pt}{1pt}}{0pt}% dashing cannot work correctly in all situation this way
+    \pgfusepath{stroke}
+  }
+  \makeatother
+
+  \def\FIGFILES{figfiles_}
+  \def\WDT{4.750in} 
+  \def\WDTA{2in}
+  \def\ROCMPfifty{\DATA/\FIGFILES/ROCplus2s_M_PROBABLE_50-999.csv}
+  \def\ROCFPfifty{\DATA/\FIGFILES/ROCplus2s_F_PROBABLE_50-999.csv}
+  \def\ROCFPfiftyh{\DATA/\FIGFILES/ROCplus2s_F_PROBABLE_50-999_highrisk.csv}
+  \def\ROCMPsfive{\DATA/\FIGFILES/ROCplus2s_M_PROBABLE_65-999.csv}
+  \def\ROCFPsfive{\DATA/\FIGFILES/ROCplus2s_F_PROBABLE_65-999.csv}
+  \def\ROCMPfiftyh{\DATA/\FIGFILES/ROCplus2s_M_PROBABLE_50-999_highrisk.csv}
+  \def\ROCMPfiftyl{\DATA/\FIGFILES/ROCplus2s_M_PROBABLE_50-999_lowrisk.csv}
+  \def\ROCMPsfiveh{\DATA/\FIGFILES/ROCplus2s_M_PROBABLE_65-999_highrisk.csv}
+  \def\ROCMPsfivel{\DATA/\FIGFILES/ROCplus2s_M_PROBABLE_65-999_lowrisk.csv}
+  \def\ROCFPsfivel{\DATA/\FIGFILES/ROCplus2s_F_PROBABLE_65-999_lowrisk.csv}
+
+  
+  \def\IMPF{\DATA/\FIGFILES/absimportanceF.csv}
+  \def\IMPM{\DATA/\FIGFILES/absimportanceM.csv}
+
+  \def\FPR{.01}
+  \pgfmathparse{1-\FPR}\let\SPEC\pgfmathresult
+  \def\FPRA{.050}
+  \pgfmathparse{1-\FPRA}\let\SPECA\pgfmathresult
+  \def\FPRB{.2}
+  \pgfmathparse{1-\FPRB}\let\SPECB\pgfmathresult
+
+  \def\HGT{1.30in}
+  \def\WDT{6in}
+  \def\WDTC{2.75in}
+  \def\WDTR{1.85in}
+  \def\WDTH{1.85in}
+  \def\precision{precision}
+  \def\recall{recall}
+   \def\precision{ppv}
+  \def\recall{tpr}
+ 
+
+  \clip (-4.65in,-7.8in) rectangle (2.15in,0.1in);
+
+  \node[] (A) at (0,0) {};
+
+  
+  \node [anchor=north east, align=left,align=left] (B) at ([xshift=-0.5in,yshift=-.35in]A.north west) {
+    \begin{tikzpicture}[anchor=center]
+      \begin{axis}[legend cell align=left,text=\TEXTCOL, legend style={text=black,anchor=west,at={(1,0.5)},inner sep=1pt,draw=none,fill=gray!19,fill opacity=.25,align=right,text opacity=1,font=\bf\sffamily\fontsize{8}{7}\selectfont},
+        name=K,
+        clip=false,
+        % at=(CC.center),
+        xshift=-0in,
+        yshift=-.25in,
+        anchor=center,
+        width=\WDTR,
+        height=\WDTH,
+        scale only axis=true,
+        enlargelimits=false,
+        axis on top=false,
+        axis background/.style={
+          shade,top color=transparent!0,bottom color=transparent!5},
+        axis line style={black!2, very thick},
+        grid=both,
+        major grid style={opacity=.9,thin,black!20},
+        minor grid style={opacity=.9,thin,black!10},
+        % xticklabel style={xshift=0.05in,yshift=-.05in},
+        xlabel style={yshift=.05in,text=\TEXTCOL},
+        ylabel style={align=center,,text=\TEXTCOL,anchor=center,
+          yshift=-.1750in},
+        % tickpos=left,
+        ytick align=outside,
+        xtick align=outside,
+        major tick length=0pt,minor tick num=4,minor tick length=0pt,
+        scaled y ticks = false,
+        y tick label style={/pgf/number format/fixed,
+          /pgf/number format/1000 sep = \thinspace % Optional if you want to replace comma as the 1000 separator 
+        },
+        ylabel={sensitivity},xlabel={1-specificity},
+        xmin=-0.05,
+        xmax=1.020,
+        ymax=1.02,
+        extra x ticks={1}]
+        % 
+        \addlegendimage{empty legend}
+        \addlegendentry{AUC}
+
+
+        \addplot [name path=a,draw=\XCOLMPfifty,  thick, fill=none,
+        ]table [col sep=comma,x=fpr ,y=tpr] {\ROCMPfifty};        
+        \addlegendentry{male Dx 50+ 87.0\%}
+
+        \addplot [name path=e1,draw=\XCOLFPfifty,  thick, fill=none,
+        fill opacity=.5,]table [col sep=comma,x=fpr ,y=tpr] {\ROCFPfifty};
+        \addlegendentry{female Dx 50+ 88.5\%}
+        
+
+        % \addplot [name path=e2,smooth,draw=\XCOLMPsfive,  ultra thick,fill=none,
+        % fill opacity=.5,]table [col sep=comma,x=fpr ,y=tpr] {\ROCMPsfive};
+        % \addlegendentry{male Dx 65+ 82.9\%}
+        
+        \addplot [name path=e3,draw=\XCOLFPsfive,  thick, fill=none,
+        fill opacity=.5,]table [col sep=comma,x=fpr ,y=tpr] {\ROCFPsfive};
+        \addlegendentry{female Dx 65+ 83.2\%}
+        
+        % \addplot [name path=e4,draw=\XCOLMPsfiveh,  thick, dashed, fill=none,
+        % fill opacity=.5,]table [col sep=comma,x=fpr ,y=tpr] {\ROCMPsfiveh};
+        % \addlegendentry{male Dx 65+ high r 82.7\%}
+        
+        % \addplot [name path=e5,dashed,draw=\XCOLFPfiftyh,  thick, fill=none,
+        % fill opacity=.5,]table [col sep=comma,x=fpr ,y=tpr] {\ROCFPfiftyh};
+        % \addlegendentry{female Dx 50+ high r 87.1\%}
+        
+        % \addplot [name path=e6,smooth,draw=\XCOLMPfiftyl,  thick, fill=none,
+        % fill opacity=.5,]table [col sep=comma,x=fpr ,y=tpr] {\ROCMPfiftyl};
+        % \addlegendentry{male Dx 50+ low r 82.6\%}
+        
+        \addplot [name path=e,smooth,draw=\XCOLMPsfivel,  thick, fill=none,
+        fill opacity=.5,]table [col sep=comma,x=fpr ,y=tpr] {\ROCMPsfivel};
+        \addlegendentry{male Dx 65+ low r 85.8\%}
+        
+
+        \draw[name path=b,smooth,draw=\LCOL,,,semithick,opacity=.0] (axis cs:\FPR,0) -- (axis cs:\FPR,\pgfkeysvalueof{/pgfplots/ymax})
+        node [yshift=-.05in,xshift=-.5in,fill=white,fill opacity=1,text opacity=0,midway,sloped,above,right,pos=.93,inner sep=0pt,,yshift=-.02in,text=\LCOL,align=center,font=\bf\sffamily\fontsize{6}{8}\selectfont] {spec. \SPEC};
+        
+        \draw[name path=b1,smooth,draw=black,,,thin,opacity=1] (axis cs:\FPRA,0) -- (axis cs:\FPRA,\pgfkeysvalueof{/pgfplots/ymax})
+        node [fill=white,fill opacity=1,text opacity=1,midway,sloped,below,pos=.875,inner sep=0pt,yshift=-.02in,xshift=0in,text=black,align=center,font=\bf\sffamily\fontsize{6}{8}\selectfont,] {spec. \SPECA};
+
+        \fill [name intersections={of=a and b},\XCOLD!50] (intersection-1) circle (2pt)coordinate (cx) ;
+        
+        \fill [name intersections={of=a and b1},\XCOLD!50] (intersection-1) circle (2pt)coordinate (c) ;
+        \fill [name intersections={of=e and b1},\XCOLA!50] (intersection-1) circle (2pt)coordinate (ce) ;
+ %       \fill [name intersections={of=f and b1},\XCOLB!50] (intersection-1) circle (1pt)coordinate (cf) ;
+
+        \draw [\LCOL!40,thin,opacity=.50] (cx) -- ($(axis cs:\pgfkeysvalueof{/pgfplots/xmin},0)!(cx)!(axis cs:\pgfkeysvalueof{/pgfplots/xmin},1)$) ;
+        
+        \draw [\LCOL!40!,thin,opacity=.5] (cx) -- ($(axis cs:1,0)!(cx)!(axis cs:1,1)$) node [font=\bf\sffamily\fontsize{7}{8}\selectfont,fill=none,inner sep=1pt, fill opacity=0.6,text opacity=.6,midway,below,pos=.53,yshift=-.02in,text=\LCOL!70] {\pgfgetlastxy{\macrox}{\macroy}%
+          \transformydimension{\macroy}
+          \gdef\SENS{\pgfmathprintnumber{\pgfmathresult}}
+          sens. at 99\% spec.: \SENS};
+
+        
+        \draw [\XCOLMPfifty,thin,opacity=.5] (c) -- ($(axis cs:\pgfkeysvalueof{/pgfplots/xmin},0)!(c)!(axis cs:\pgfkeysvalueof{/pgfplots/xmin},1)$) ;
+        
+        \draw [\XCOLMPfifty,thin,opacity=.5] (c) -- ($(axis cs:1,0)!(c)!(axis cs:1,1)$) node [font=\bf\sffamily\fontsize{7}{8}\selectfont,fill=none,inner sep=1pt, fill opacity=0.6,text opacity=.6,midway,above,pos=.55,yshift=.02in,text=\XCOLMPfifty] {\pgfgetlastxy{\macrox}{\macroy}%
+          \transformydimension{\macroy}
+          \gdef\SENS{\pgfmathprintnumber{\pgfmathresult}}
+          sens. (male Dx 50+): \SENS};
+
+
+        \draw [\XCOLMPsfivel!50!black,thin,opacity=.5] (ce) -- ($(axis cs:\pgfkeysvalueof{/pgfplots/xmin},0)!(ce)!(axis cs:\pgfkeysvalueof{/pgfplots/xmin},1)$) ;
+        
+        \draw [\XCOLMPsfivel!50!black,thin,opacity=.5] (ce) -- ($(axis cs:1,0)!(ce)!(axis cs:1,1)$) node [font=\bf\sffamily\fontsize{7}{8}\selectfont,fill=none,inner sep=1pt, fill opacity=0.6,text opacity=.6,midway,below,pos=.5,yshift=-.02in,text=\XCOLMPsfivel!70!black] {\pgfgetlastxy{\macrox}{\macroy}%
+          \transformydimension{\macroy}
+          \gdef\SENS{\pgfmathprintnumber{\pgfmathresult}}
+          sens. (male Dx 65+low risk): \SENS};
+       
+
+      
+      \end{axis}
+    \end{tikzpicture} 
+  };
+  % 
+  \def\XST{2.5in}
+  \def\YST{-.7in}
+\def\THISFONT{\sffamily\fontsize{7}{8}\selectfont}
+ %  \draw[ultra thick,\XCOLA,font=\THISFONT] ([xshift=\XST,yshift=\YST]$(B.south west)!1.05!(B.north west)$) -- ++(.2in,0) node [right] {Female};
+ %  \draw[ultra thick,\XCOLD,font=\THISFONT] ([xshift=\XST,yshift=\YST]$(B.south west)!1.1!(B.north west)$) -- ++(.2in,0) node [right] {Male};
+ %  \draw[ultra thick,\XCOLI,font=\THISFONT] ([xshift=\XST,yshift=\YST]$(B.south west)!1.15!(B.north west)$) -- ++(.2in,0) node [right] {Male COPD/Heart Disease};
+ %  \draw[ultra thick,\XCOLIf,font=\THISFONT] ([xshift=\XST,yshift=\YST]$(B.south west)!1.2!(B.north west)$) -- ++(.2in,0) node [right] {Female COPD/Heart Disease};
+ %  % \draw[ultra thick,\XCOLJ,font=\THISFONT] ([xshift=\XST,yshift=\YST]$(B.south west)!1.25!(B.north west)$) -- ++(.2in,0) node [right] {Male No-dyspnea};
+ %  \draw[ultra thick,\XCOLJf,font=\THISFONT] ([xshift=\XST,yshift=\YST]$(B.south west)!1.25!(B.north west)$) -- ++(.2in,0) node [right] {No-dyspnea};
+ % \draw[ultra thick,\XCOLB,font=\THISFONT] ([xshift=\XST,yshift=\YST]$(B.south west)!1.3!(B.north west)$) -- ++(.2in,0) node [right] {Low-risk (M/F)};
+
+
+  
+  \def\OPC{.75}
+  \def\LWDT{.4mm}
+  \def\SKIP{1}
+  \def\LEGEND{At first prenatal visit$^\star$}
+  \def\LEGENDB{Endocrine$^\dag$ (at first prenatal visit)}
+  \def\LEGENDC{1M before$^\dag$}
+  \def\LEGENDE{4M before$^\dag$}
+
+  \def\SENSA{0.6}
+  \def\SENSE{0.55}
+  \def\SENSD{0.48}
+  
+  \def\SENSA{0.21}
+  \def\SENSE{0.37}
+  \def\SENSD{0.5}
+
+  \def\LOPC{.4}
+  
+  \node[anchor=north west] (C) at ([yshift=0in,xshift=-.25in]B.north east) 
+  {
+    \def\HGT{1.85in}
+    \def\WDT{1.85in}
+    \begin{tikzpicture}[text=\TEXTCOL,]
+      \begin{axis}[legend cell align=left,text=\TEXTCOL, legend style={text=black,anchor=east,at={(1.1,1.2)},inner sep=1pt,draw=none,fill=gray!19,fill opacity=.25,align=right,text opacity=1,font=\bf\sffamily\fontsize{7}{8}\selectfont},
+        name=K,
+        clip=true,
+        % at=(CC.center),
+        xshift=-0in,
+        yshift=-.25in,
+        anchor=center,
+        width=\WDT,
+        height=\HGT,
+        scale only axis=true,
+        enlargelimits=false,
+        axis on top=false,
+        axis background/.style={
+          shade,top color=transparent!0,bottom color=transparent!5},
+        axis line style={black!2, very thick},
+        grid=both,
+        major grid style={opacity=.9,thin,black!20},
+        minor grid style={opacity=.9,thin,black!10},
+        % xticklabel style={xshift=0.05in,yshift=-.05in},
+        xlabel style={yshift=.05in,text=\TEXTCOL},
+        ylabel style={align=center,,text=\TEXTCOL,anchor=center,
+          yshift=-.0in},
+        % tickpos=left,
+        ytick align=outside,
+        xtick align=outside,
+        major tick length=0pt,minor tick num=4,minor tick length=0pt,
+        scaled y ticks = false,
+        y tick label style={/pgf/number format/fixed,
+          /pgf/number format/1000 sep = \thinspace % Optional if you want to replace comma as the 1000 separator 
+        },
+        ylabel={PPV},xlabel={sensitivity},
+        xmin=0.05,
+        %xmax=1.02,
+        %ymax=0.2,
+        % extra x ticks={1},extra x tick labels={1}
+        ]
+
+        \addplot [name path=A,each nth point=\SKIP,
+        filter discard warning=false,
+        unbounded coords=discard,draw=\XCOLMPfifty,
+        line width=\LWDT,opacity=\OPC,
+        ]table [col sep=comma,x=\recall,y=\precision] {\ROCMPfifty};
+
+        
+        \addplot [name path=E,each nth point=\SKIP,
+        filter discard warning=false, 
+        unbounded coords=discard,smooth,draw=\XCOLFPfifty,
+        line width=\LWDT,opacity=\OPC,
+        ]table [col sep=comma,x=\recall,y=\precision] {\ROCFPfifty};
+
+
+        % \addplot [name path=A,each nth point=\SKIP,
+        % filter discard warning=false, 
+        % unbounded coords=discard,draw=\XCOLMPsfive,
+        % line width=\LWDT,opacity=\OPC,
+        % ]table [col sep=comma,x=\recall,y=\precision] {\ROCMPsfive};
+        
+        \addplot [name path=E,each nth point=\SKIP,
+        filter discard warning=false, 
+        unbounded coords=discard,smooth,draw=\XCOLFPsfive,
+        line width=\LWDT,opacity=\OPC,
+        ]table [col sep=comma,x=\recall,y=\precision] {\ROCFPsfive};
+        
+        % \addplot [name path=E,
+        % unbounded coords=discard,,draw=\XCOLMPsfiveh,
+        % line width=\LWDT,opacity=\OPC,
+        % ]table [col sep=comma,x=\recall,y=\precision] {\ROCMPsfiveh};
+
+        \addplot [name path=E1,each nth point=\SKIP,
+        filter discard warning=false, 
+        unbounded coords=discard,smooth,draw=\XCOLMPsfivel,
+        line width=\LWDT,opacity=\OPC,
+        ]table [col sep=comma,x=\recall,y=\precision] {\ROCMPsfivel};
+ 
+        
+        \draw[name path=a,draw=\XCOLA,,,semithick,
+        opacity=\LOPC,dashed] (axis cs:\SENSA,
+        \pgfkeysvalueof{/pgfplots/ymin})
+        -- (axis cs:\SENSA,
+        \pgfkeysvalueof{/pgfplots/ymax}) node [fill=white,
+        fill opacity=1,
+        ,text opacity=1,midway,sloped,pos=.12,yshift=.03in,
+        xshift=0in,,text=black,align=left,
+        font=\bf\sffamily\fontsize{7}{6}\selectfont,
+        inner sep=0pt,] {sens. \SENSA% \\\fontsize{5}{4}\selectfont \color{black} (spec. 99.7\%)
+        };
+
+        
+        \draw[name path=e,draw=\XCOLA,,,semithick,opacity=\LOPC,dashed] (axis cs:\SENSE,\pgfkeysvalueof{/pgfplots/ymin}) -- (axis cs:\SENSE,\pgfkeysvalueof{/pgfplots/ymax}) node [fill=white,fill opacity=1,,text opacity=1,midway,sloped,pos=.120,yshift=.03in,xshift=0in,inner sep=0pt,text=black,align=left,font=\bf\sffamily\fontsize{7}{6}\selectfont] {sens. \SENSE% E\\\fontsize{5}{4}\selectfont \color{black} (spec. 99\%)
+        };
+
+
+        \fill [name intersections={of=A and a},black] (intersection-1) circle (2pt)coordinate (ca) ;
+        \pgfgetlastxy{\macrox}{\macroy}%
+        
+  \draw [\XCOLMPfifty,semithick,dashed,opacity=\LOPC,] (ca) -- ($(axis cs:\pgfkeysvalueof{/pgfplots/xmin},0)!(ca)!(axis cs:\pgfkeysvalueof{/pgfplots/xmin},1)$)node [font=\bf\sffamily\fontsize{6}{8}\selectfont,,fill opacity=.6,fill=white,,text opacity=1,midway,above,xshift=.8in,pos=0,yshift=-0.02in] {
+\pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2}
+    PPV: \pgfgetlastxy{\macrox}{\macroy}%
+          \transformydimension{\macroy}%
+          \pgfmathprintnumber{\pgfmathresult}} ;
+        \draw [\XCOLMPfifty,semithick,dashed,opacity=\LOPC,] (ca) -- ($(axis cs:1,0)!(ca)!(axis cs:1,1)$);
+
+
+
+%         \fill [name intersections={of=B and e},black] (intersection-1) circle (2pt)coordinate (ce) ;
+%         \pgfgetlastxy{\macrox}{\macroy}%
+
+%         \draw [\XCOLA,semithick,,opacity=\LOPC,dashed] (ce) -- ($(axis cs:\pgfkeysvalueof{/pgfplots/xmin},0)!(ce)!(axis cs:\pgfkeysvalueof{/pgfplots/xmin},1)$)node [font=\bf\sffamily\fontsize{6}{8}\selectfont,,fill opacity=.6,fill=none,,text opacity=1,midway,below,xshift=.75in,pos=0,yshift=0in] {\pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2}
+% PPV: \pgfgetlastxy{\macrox}{\macroy}%
+%           \transformydimension{\macroy}%
+%           \pgfmathprintnumber{\pgfmathresult}};
+        
+%         \draw [\XCOLA,semithick,,opacity=\LOPC,dashed] (ce) -- ($(axis cs:1,0)!(ce)!(axis cs:1,1)$);
+
+
+        \fill [name intersections={of=E1 and e},\XCOLMPsfivel] (intersection-1) circle (2pt)coordinate (ce) ;
+        \pgfgetlastxy{\macrox}{\macroy}%
+
+        \draw [\XCOLMPsfivel,semithick,,opacity=\LOPC,dashed] (ce) -- ($(axis cs:\pgfkeysvalueof{/pgfplots/xmin},0)!(ce)!(axis cs:\pgfkeysvalueof{/pgfplots/xmin},1)$)node [font=\bf\sffamily\fontsize{6}{8}\selectfont,,fill opacity=.6,fill=none,,text opacity=1,midway,above,xshift=.75in,pos=0,yshift=0in] {\pgfkeys{/pgf/number format/.cd,fixed,fixed zerofill,precision=2}
+PPV: \pgfgetlastxy{\macrox}{\macroy}%
+          \transformydimension{\macroy}%
+          \pgfmathprintnumber{\pgfmathresult}};
+        
+        \draw [\XCOLMPsfivel,semithick,,opacity=\LOPC,dashed] (ce) -- ($(axis cs:1,0)!(ce)!(axis cs:1,1)$);
+
+        
+      \end{axis}
+      
+    \end{tikzpicture}
+  };
+
+  \pgfplotstableread[col sep=comma]{\IMPF}\impf;
+  \pgfplotstableread[col sep=comma]{\IMPM}\impm;
+  \node [anchor=north west,align=left] (R) at ([xshift=1.52in,yshift=-.25in]B.south west) {
+    \begin{axis}[legend cell align=left,legend style={anchor=east,at={(1.5,.1)},inner sep=3pt,draw=none,fill=white,fill opacity=.85,align=right,text opacity=1,font=\bf\sffamily\fontsize{8}{9}\selectfont},axis line style={lightgray, opacity=0, thin},%
+      enlargelimits=true,
+      % grid,
+      xshift=.1in,
+      anchor=north west,
+      height=5in,
+      width=1.5in,
+      xbar, 
+      ytick=data,% crucial line for the xticklabels directive 
+      ymin=0, 
+      yticklabels from table={\impm}{feature},
+      yticklabel style={font=\bf\sffamily\fontsize{7}{9}\selectfont,align=right,rotate=0,
+       text width=2in,
+        anchor=east, yshift=0in,xshift=-.045in,text=\TEXTCOL},
+      major tick length=0pt,
+      xticklabel style={font=\bf\sffamily\fontsize{7}{7}\selectfont,text=\TEXTCOL},
+      grid,
+      grid style={lightgray, opacity=.7},
+      axis on top=false, bar width=3pt,xlabel={importance},xlabel style={yshift=-0.05in,text=\TEXTCOL},
+      enlarge y limits=0.05, enlarge x limits=0.2,
+      every x tick scale label/.style={at={(rel axis cs:1,0)},anchor=south west,inner sep=1pt},
+      ] 
+      \addplot[opacity=1,draw=\XCOLD, fill=\XCOLD,area legend] table [ 
+      y expr=\coordindex,
+      x=importanceM_PROBABLE
+      ] {\impm};    
+      \addlegendentry{Male Dx}
+
+      \addplot[opacity=1,draw=\XCOLD!50, fill=\XCOLD!50,area legend] table [ 
+      y expr=\coordindex,
+      x=importanceM_ORDEFINITE
+      ] {\impm};    
+      \addlegendentry{Male Dx/Rx}
+
+
+      
+      % \addplot[opacity=1,draw=\XCOLA, fill=\XCOLA, area legend] table [ 
+      % y expr=\coordindex,
+      % x=importanceF
+      % ] {\IMPA};    
+      % \addlegendentry{Female}
+    \end{axis} 
+  };
+
+  \node [anchor=north west,align=left] (RB) at ([xshift=2in,yshift=0in]R.north east) {
+    \begin{axis}[legend cell align=left,legend style={anchor=east,at={(1.7,0.10)},inner sep=3pt,draw=none,fill=white,fill opacity=.850,align=right,text opacity=1,font=\bf\sffamily\fontsize{8}{9}\selectfont},axis line style={lightgray, opacity=0, thin},%
+      enlargelimits=true,
+      % grid,
+      xshift=.1in,
+      anchor=north west,
+      height=5in,
+      width=1.50in,
+      xbar, 
+      ytick=data,% crucial line for the xticklabels directive 
+      ymin=0, 
+      yticklabels from table={\impf}{feature},
+      yticklabel style={font=\bf\sffamily\fontsize{7}{9}\selectfont,align=right,rotate=0, text width=2in, anchor=east, yshift=0in,xshift=-.045in,text=\TEXTCOL},
+      major tick length=0pt,
+      xticklabel style={font=\bf\sffamily\fontsize{7}{7}\selectfont,text=\TEXTCOL},
+      grid,
+      grid style={lightgray, opacity=.7},
+      axis on top=false, bar width=3pt,xlabel={importance},xlabel style={yshift=-0.05in,text=\TEXTCOL},
+      enlarge y limits=0.05, enlarge x limits=0.2,
+      every x tick scale label/.style={at={(rel axis cs:1,0)},anchor=south west,inner sep=1pt},
+      ] 
+      % \addplot[opacity=1,draw=\XCOLD, fill=\XCOLD,area legend] table [ 
+      % y expr=\coordindex,
+      % x=importanceM
+      % ] {\IMPB};    
+      % \addlegendentry{Male}
+      \addplot[opacity=1,draw=\XCOLA, fill=\XCOLA, area legend] table [ 
+      y expr=\coordindex,
+      x=importanceF_PROBABLE
+      ] {\impf};    
+      \addlegendentry{Female Dx}
+      \addplot[opacity=1,draw=\XCOLA!50, fill=\XCOLA!50,
+      area legend] table [ 
+      y expr=\coordindex,
+      x=importanceF_ORDEFINITE
+      ] {\impf};    
+      \addlegendentry{Female Dx/Rx}
+    \end{axis} 
+  };
+
+%  % \node[align=left,anchor=south west] (LF) at (F.north west) {{\Large a.} Schematic description of prediction scenarios};
+  \node [align=left,anchor=south west] (LB) at ([yshift=.15in]B.north west) {{\Large a.} Receiver Operating Characteristic curves};
+%  \node[align=left,anchor=south west] (LF) at ($(F.north west)!(LB.west)!(F.north east)$) {{\Large a.} Schematic description of prediction scenarios};
+  \node[align=left,anchor=north west] (LC) at ([xshift=.1in,yshift=.025in]$(LB.north west)!(C.west)!(LB.north east)$) {{\Large b.} Precision Recall curves};
+ \node[align=left,anchor=south west] (LR) at ($(R.north west)!(LB.west)!(R.north east)$) {{\Large c.} Feature importances for broad categories of co-morbidities};
+% \node[align=left,anchor=west] (LRB) at ([xshift=-1in]$(LR.west)!(RB.west)!(LR.east)$) {{\Large e.} Feature importances for Manic Switch};
+
+\end{tikzpicture}
