@@ -1,0 +1,128 @@
+graph Tree {
+node [shape=box, style="filled, rounded",color="black",penwidth="3",fontcolor="black",                 fontname=helvetica] ;
+graph [ranksep="0 equally", splines=straight,                 bgcolor=transparent, dpi=200] ;
+edge [fontname=helvetica, color=black] ;
+0 [label="1
+Prob: 0.946
+Frac: 0.215", fillcolor="#f8c459"] ;
+1 [label="ptsd199", fillcolor="#eccb5f"] ;
+2 [label="2
+Prob: 0.6
+Frac: 0.029", fillcolor="#90ff99"] ;
+3 [label="ptsd45", fillcolor="#b1ef7f"] ;
+4 [label="1
+Prob: 0.667
+Frac: 0.017", fillcolor="#e7d555"] ;
+5 [label="ptsd45", fillcolor="#c0e677"] ;
+6 [label="1
+Prob: 1.0
+Frac: 0.012", fillcolor="#ffc155"] ;
+7 [label="ptsd192", fillcolor="#a8c6a1"] ;
+8 [label="2
+Prob: 1.0
+Frac: 0.099", fillcolor="#b8ff55"] ;
+9 [label="ptsd168", fillcolor="#bafc55"] ;
+10 [label="2
+Prob: 1.0
+Frac: 0.029", fillcolor="#b8ff55"] ;
+11 [label="ptsd20", fillcolor="#c2f655"] ;
+12 [label="1
+Prob: 0.5
+Frac: 0.012", fillcolor="#dbe055"] ;
+13 [label="ptsd158", fillcolor="#bcf067"] ;
+14 [label="5
+Prob: 0.5
+Frac: 0.023", fillcolor="#c2aad4"] ;
+15 [label="ptsd156", fillcolor="#8bc3bd"] ;
+16 [label="1
+Prob: 0.5
+Frac: 0.023", fillcolor="#dbe055"] ;
+17 [label="ptsd17", fillcolor="#e7d555"] ;
+18 [label="1
+Prob: 1.0
+Frac: 0.012", fillcolor="#ffc155"] ;
+19 [label="ptsd143", fillcolor="#7ab4db"] ;
+20 [label="1
+Prob: 0.667
+Frac: 0.017", fillcolor="#e7d555"] ;
+21 [label="ptsd154", fillcolor="#71b1e6"] ;
+22 [label="4
+Prob: 0.667
+Frac: 0.017", fillcolor="#588dff"] ;
+23 [label="ptsd115", fillcolor="#6cb0ec"] ;
+24 [label="3
+Prob: 0.533
+Frac: 0.174", fillcolor="#72cce2"] ;
+25 [label="ptsd17", fillcolor="#6db1eb"] ;
+26 [label="3
+Prob: 1.0
+Frac: 0.023", fillcolor="#55ffff"] ;
+27 [label="ptsd68", fillcolor="#63ffe6"] ;
+28 [label="3
+Prob: 0.667
+Frac: 0.017", fillcolor="#76ffc6"] ;
+29 [label="ptsd94", fillcolor="#699df1"] ;
+30 [label="3
+Prob: 0.385
+Frac: 0.076", fillcolor="#7e9ef1"] ;
+31 [label="ptsd49", fillcolor="#6b88f4"] ;
+32 [label="3
+Prob: 1.0
+Frac: 0.017", fillcolor="#55ffff"] ;
+33 [label="ptsd85", fillcolor="#65b6e6"] ;
+34 [label="4
+Prob: 0.75
+Frac: 0.023", fillcolor="#717fd4"] ;
+35 [label="ptsd99", fillcolor="#5e78f6"] ;
+36 [label="4
+Prob: 1.0
+Frac: 0.07", fillcolor="#5a55ff"] ;
+37 [label="ptsd175", fillcolor="#adbbaa"] ;
+38 [label="5
+Prob: 1.0
+Frac: 0.07", fillcolor="#ff55ff"] ;
+39 [label="ptsd4", fillcolor="#e055ff"] ;
+40 [label="4
+Prob: 0.75
+Frac: 0.023", fillcolor="#8355ff"] ;
+1 -- 0 [label=" 1",penwidth=3] ;
+1 -- 5 [label=" 2\n 3\n 4",penwidth=3] ;
+3 -- 2 [label=" 1\n 2",penwidth=3] ;
+3 -- 4 [label=" 3",penwidth=3] ;
+5 -- 3 [label=" 1\n 2\n 3",penwidth=3] ;
+5 -- 6 [label=" 4",penwidth=3] ;
+7 -- 1 [label=" 1",penwidth=3] ;
+7 -- 15 [label=" 2\n 3\n 4\n 5",penwidth=3] ;
+9 -- 8 [label=" 2",penwidth=3] ;
+9 -- 11 [label=" 1\n 3",penwidth=3] ;
+11 -- 10 [label=" 1",penwidth=3] ;
+11 -- 12 [label=" 2\n 3",penwidth=3] ;
+13 -- 9 [label=" 2",penwidth=3] ;
+13 -- 14 [label=" 1\n 3\n 4",penwidth=3] ;
+15 -- 13 [label=" 2",penwidth=3] ;
+15 -- 19 [label=" 1\n 3\n 4\n 5",penwidth=3] ;
+17 -- 16 [label=" 1\n 2",penwidth=3] ;
+17 -- 18 [label=" 3",penwidth=3] ;
+19 -- 17 [label=" 1",penwidth=3] ;
+19 -- 21 [label=" 2\n 3\n 4\n 5",penwidth=3] ;
+21 -- 20 [label=" 1",penwidth=3] ;
+21 -- 23 [label=" 2\n 3\n 4\n 5",penwidth=3] ;
+23 -- 22 [label=" 4",penwidth=3] ;
+23 -- 25 [label=" 1\n 2\n 3\n 5",penwidth=3] ;
+25 -- 24 [label=" 2\n 3",penwidth=3] ;
+25 -- 29 [label=" 1\n 4\n 5",penwidth=3] ;
+27 -- 26 [label=" 3",penwidth=3] ;
+27 -- 28 [label=" 4\n 5",penwidth=3] ;
+29 -- 27 [label=" 3",penwidth=3] ;
+29 -- 31 [label=" 2\n 4",penwidth=3] ;
+31 -- 30 [label=" 2\n 3",penwidth=3] ;
+31 -- 35 [label=" 4",penwidth=3] ;
+33 -- 32 [label=" 3",penwidth=3] ;
+33 -- 34 [label=" 2\n 4",penwidth=3] ;
+35 -- 33 [label=" 1\n 2\n 3",penwidth=3] ;
+35 -- 36 [label=" 4",penwidth=3] ;
+37 -- 7 [label=" 1\n 2\n 3\n 4",penwidth=3] ;
+37 -- 39 [label=" 5",penwidth=3] ;
+39 -- 38 [label=" 1\n 3",penwidth=3] ;
+39 -- 40 [label=" 2\n 4",penwidth=3] ;
+{rank = same;}}
