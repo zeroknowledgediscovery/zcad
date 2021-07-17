@@ -1,0 +1,110 @@
+graph Tree {
+node [shape=box, style="filled, rounded",color="black",penwidth="3",fontcolor="black",                 fontname=helvetica] ;
+graph [ranksep="0 equally", splines=straight,                 bgcolor=transparent, dpi=200] ;
+edge [fontname=helvetica, color=black] ;
+0 [label="1
+Prob: 1.0
+Frac: 0.01", fillcolor="#ffc155"] ;
+1 [label="59", fillcolor="#cecd85"] ;
+2 [label="2
+Prob: 1.0
+Frac: 0.004", fillcolor="#55ebff"] ;
+3 [label="60", fillcolor="#d6cb7d"] ;
+4 [label="1
+Prob: 0.8
+Frac: 0.01", fillcolor="#ddc977"] ;
+5 [label="20", fillcolor="#e9c66a"] ;
+6 [label="1
+Prob: 1.0
+Frac: 0.006", fillcolor="#ffc155"] ;
+7 [label="30", fillcolor="#d0cc83"] ;
+8 [label="2
+Prob: 0.667
+Frac: 0.006", fillcolor="#8dddc6"] ;
+9 [label="30", fillcolor="#daca79"] ;
+10 [label="1
+Prob: 1.0
+Frac: 0.006", fillcolor="#ffc155"] ;
+11 [label="79", fillcolor="#f8c25b"] ;
+12 [label="1
+Prob: 0.75
+Frac: 0.042", fillcolor="#d4cb7f"] ;
+13 [label="188", fillcolor="#f5c35e"] ;
+14 [label="1
+Prob: 0.8
+Frac: 0.01", fillcolor="#ddc977"] ;
+15 [label="192", fillcolor="#fdc156"] ;
+16 [label="1
+Prob: 1.0
+Frac: 0.181", fillcolor="#ffc155"] ;
+17 [label="88", fillcolor="#fbc158"] ;
+18 [label="1
+Prob: 1.0
+Frac: 0.012", fillcolor="#ffc155"] ;
+19 [label="21", fillcolor="#f0c463"] ;
+20 [label="1
+Prob: 0.833
+Frac: 0.012", fillcolor="#e2c871"] ;
+21 [label="57", fillcolor="#fac259"] ;
+22 [label="1
+Prob: 0.992
+Frac: 0.518", fillcolor="#fdc156"] ;
+23 [label="160", fillcolor="#fac259"] ;
+24 [label="1
+Prob: 0.714
+Frac: 0.015", fillcolor="#cecd85"] ;
+25 [label="227", fillcolor="#efc464"] ;
+26 [label="1
+Prob: 1.0
+Frac: 0.004", fillcolor="#ffc155"] ;
+27 [label="47", fillcolor="#c6cf8d"] ;
+28 [label="1
+Prob: 0.5
+Frac: 0.017", fillcolor="#aad6aa"] ;
+29 [label="47", fillcolor="#bbd199"] ;
+30 [label="1
+Prob: 1.0
+Frac: 0.004", fillcolor="#ffc155"] ;
+31 [label="204", fillcolor="#e5c76e"] ;
+32 [label="1
+Prob: 1.0
+Frac: 0.031", fillcolor="#ffc155"] ;
+33 [label="49", fillcolor="#c3cf90"] ;
+34 [label="1
+Prob: 0.547
+Frac: 0.11", fillcolor="#b2d4a1"] ;
+1 -- 0 [label=" 2",penwidth=3] ;
+1 -- 2 [label=" 1\n 4",penwidth=3] ;
+3 -- 1 [label=" 2",penwidth=3] ;
+3 -- 9 [label=" 1\n 3\n 4\n 5",penwidth=3] ;
+5 -- 4 [label=" 1\n 2",penwidth=3] ;
+5 -- 6 [label=" 3",penwidth=3] ;
+7 -- 5 [label=" 2",penwidth=3] ;
+7 -- 8 [label=" 1\n 3",penwidth=3] ;
+9 -- 7 [label=" 1\n 2\n 3",penwidth=3] ;
+9 -- 10 [label=" 4",penwidth=3] ;
+11 -- 3 [label=" 2\n 3",penwidth=3] ;
+11 -- 23 [label=" 1\n 4",penwidth=3] ;
+13 -- 12 [label=" 2\n 3",penwidth=3] ;
+13 -- 17 [label=" 1\n 4\n 5\n 6",penwidth=3] ;
+15 -- 14 [label=" 2",penwidth=3] ;
+15 -- 16 [label=" 1\n 3\n 4\n 5\n 6",penwidth=3] ;
+17 -- 15 [label=" 1\n 3\n 4",penwidth=3] ;
+17 -- 19 [label=" 2\n 5",penwidth=3] ;
+19 -- 18 [label=" 1\n 3",penwidth=3] ;
+19 -- 20 [label=" 2\n 4",penwidth=3] ;
+21 -- 13 [label=" 2\n 4",penwidth=3] ;
+21 -- 22 [label=" 1\n 3\n 5",penwidth=3] ;
+23 -- 21 [label=" 1\n 2\n 3\n 4",penwidth=3] ;
+23 -- 24 [label=" 5",penwidth=3] ;
+25 -- 11 [label=" 1",penwidth=3] ;
+25 -- 33 [label=" 2\n 3\n 4",penwidth=3] ;
+27 -- 26 [label=" 3",penwidth=3] ;
+27 -- 29 [label=" 1\n 2\n 4",penwidth=3] ;
+29 -- 28 [label=" 1\n 2",penwidth=3] ;
+29 -- 30 [label=" 4",penwidth=3] ;
+31 -- 27 [label=" 2\n 4",penwidth=3] ;
+31 -- 32 [label=" 1\n 3\n 5",penwidth=3] ;
+33 -- 31 [label=" 1\n 3",penwidth=3] ;
+33 -- 34 [label=" 2\n 4\n 5",penwidth=3] ;
+{rank = same;}}
