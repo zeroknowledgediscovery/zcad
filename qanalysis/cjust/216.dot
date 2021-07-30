@@ -70,13 +70,13 @@ Frac: 0.013", fillcolor="#55ebff"] ;
 Prob: 1.0
 Frac: 0.002", fillcolor="#ffc155"] ;
 33 [label="45", fillcolor="#aad6aa"] ;
-34 [label="2
-Prob: 1.0
-Frac: 0.002", fillcolor="#55ebff"] ;
-35 [label="19", fillcolor="#8dddc6"] ;
-36 [label="1
+34 [label="1
 Prob: 0.5
 Frac: 0.004", fillcolor="#aad6aa"] ;
+35 [label="45", fillcolor="#8dddc6"] ;
+36 [label="2
+Prob: 1.0
+Frac: 0.002", fillcolor="#55ebff"] ;
 37 [label="226", fillcolor="#e1c872"] ;
 38 [label="1
 Prob: 0.84
@@ -123,8 +123,8 @@ Frac: 0.167", fillcolor="#a9d6aa"] ;
 31 -- 33 [label=" 1\n 4",penwidth=3] ;
 33 -- 32 [label=" 3",penwidth=3] ;
 33 -- 35 [label=" 1\n 2\n 4",penwidth=3] ;
-35 -- 34 [label=" 2",penwidth=3] ;
-35 -- 36 [label=" 3\n 4",penwidth=3] ;
+35 -- 34 [label=" 1\n 2",penwidth=3] ;
+35 -- 36 [label=" 4",penwidth=3] ;
 37 -- 13 [label=" 1",penwidth=3] ;
 37 -- 41 [label=" 2\n 3\n 4",penwidth=3] ;
 39 -- 38 [label=" 1\n 4",penwidth=3] ;

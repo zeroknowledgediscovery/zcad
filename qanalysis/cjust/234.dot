@@ -56,11 +56,11 @@ Frac: 0.007", fillcolor="#cfea55"] ;
 25 [label="199", fillcolor="#a7ed7c"] ;
 26 [label="2
 Prob: 1.0
-Frac: 0.01", fillcolor="#b8ff55"] ;
-27 [label="250", fillcolor="#a8e271"] ;
+Frac: 0.007", fillcolor="#b8ff55"] ;
+27 [label="60", fillcolor="#a8e271"] ;
 28 [label="2
-Prob: 0.5
-Frac: 0.005", fillcolor="#89aaaa"] ;
+Prob: 0.667
+Frac: 0.007", fillcolor="#98c68d"] ;
 29 [label="238", fillcolor="#9aee88"] ;
 30 [label="2
 Prob: 0.5

@@ -39,12 +39,12 @@ Prob: 0.5
 Frac: 0.002", fillcolor="#aad6aa"] ;
 17 [label="20", fillcolor="#d7ca7c"] ;
 18 [label="1
-Prob: 0.818
-Frac: 0.011", fillcolor="#e0c873"] ;
-19 [label="19", fillcolor="#eec565"] ;
+Prob: 0.5
+Frac: 0.002", fillcolor="#aad6aa"] ;
+19 [label="182", fillcolor="#eec565"] ;
 20 [label="1
-Prob: 1.0
-Frac: 0.01", fillcolor="#ffc155"] ;
+Prob: 0.947
+Frac: 0.019", fillcolor="#f6c35d"] ;
 21 [label="20", fillcolor="#daca79"] ;
 22 [label="2
 Prob: 0.571

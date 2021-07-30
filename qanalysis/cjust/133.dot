@@ -61,7 +61,7 @@ Frac: 0.012", fillcolor="#ffc155"] ;
 28 [label="2
 Prob: 1.0
 Frac: 0.01", fillcolor="#55ebff"] ;
-29 [label="50", fillcolor="#6de5e6"] ;
+29 [label="146", fillcolor="#6de5e6"] ;
 30 [label="1
 Prob: 0.5
 Frac: 0.004", fillcolor="#aad6aa"] ;
@@ -137,8 +137,8 @@ Frac: 0.031", fillcolor="#8addc9"] ;
 25 -- 27 [label=" 2\n 4\n 5",penwidth=3] ;
 27 -- 26 [label=" 1\n 3",penwidth=3] ;
 27 -- 29 [label=" 2\n 4",penwidth=3] ;
-29 -- 28 [label=" 2",penwidth=3] ;
-29 -- 30 [label=" 3\n 5",penwidth=3] ;
+29 -- 28 [label=" 1",penwidth=3] ;
+29 -- 30 [label=" 5\n 6",penwidth=3] ;
 31 -- 19 [label=" 1",penwidth=3] ;
 31 -- 33 [label=" 2\n 3\n 4\n 5",penwidth=3] ;
 33 -- 32 [label=" 1\n 3",penwidth=3] ;

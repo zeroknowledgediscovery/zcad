@@ -13,7 +13,7 @@ Frac: 0.002", fillcolor="#aad6aa"] ;
 4 [label="1
 Prob: 0.5
 Frac: 0.002", fillcolor="#aad6aa"] ;
-5 [label="147", fillcolor="#fac25a"] ;
+5 [label="148", fillcolor="#fac25a"] ;
 6 [label="1
 Prob: 1.0
 Frac: 0.035", fillcolor="#ffc155"] ;
@@ -25,11 +25,11 @@ Frac: 0.361", fillcolor="#ffc155"] ;
 10 [label="1
 Prob: 1.0
 Frac: 0.003", fillcolor="#ffc155"] ;
-11 [label="210", fillcolor="#fec155"] ;
+11 [label="208", fillcolor="#fec155"] ;
 12 [label="1
 Prob: 1.0
 Frac: 0.002", fillcolor="#ffc155"] ;
-13 [label="208", fillcolor="#fec155"] ;
+13 [label="210", fillcolor="#fec155"] ;
 14 [label="1
 Prob: 1.0
 Frac: 0.415", fillcolor="#ffc155"] ;

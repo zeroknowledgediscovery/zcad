@@ -15,72 +15,78 @@ Prob: 1.0
 Frac: 0.026", fillcolor="#ffc155"] ;
 5 [label="194", fillcolor="#f5c35e"] ;
 6 [label="1
-Prob: 0.826
-Frac: 0.023", fillcolor="#e1c872"] ;
-7 [label="44", fillcolor="#f5c35e"] ;
+Prob: 0.952
+Frac: 0.103", fillcolor="#f6c35d"] ;
+7 [label="32", fillcolor="#f5c35e"] ;
 8 [label="1
-Prob: 0.967
-Frac: 0.121", fillcolor="#f9c25a"] ;
-9 [label="51", fillcolor="#f2c461"] ;
-10 [label="1
 Prob: 1.0
-Frac: 0.006", fillcolor="#ffc155"] ;
-11 [label="185", fillcolor="#e0c873"] ;
+Frac: 0.011", fillcolor="#ffc155"] ;
+9 [label="20", fillcolor="#f2c461"] ;
+10 [label="1
+Prob: 0.9
+Frac: 0.03", fillcolor="#eec566"] ;
+11 [label="51", fillcolor="#f2c461"] ;
 12 [label="1
-Prob: 0.788
-Frac: 0.033", fillcolor="#dac979"] ;
+Prob: 0.821
+Frac: 0.038", fillcolor="#e0c873"] ;
 13 [label="24", fillcolor="#e9c66a"] ;
 14 [label="1
-Prob: 1.0
-Frac: 0.015", fillcolor="#ffc155"] ;
-15 [label="32", fillcolor="#ddc977"] ;
+Prob: 0.8
+Frac: 0.02", fillcolor="#ddc977"] ;
+15 [label="32", fillcolor="#c9ce8a"] ;
 16 [label="1
-Prob: 0.7
-Frac: 0.03", fillcolor="#cccd88"] ;
-17 [label="38", fillcolor="#c9ce8a"] ;
-18 [label="2
-Prob: 0.611
-Frac: 0.018", fillcolor="#97dabc"] ;
-19 [label="10", fillcolor="#c8ce8b"] ;
-20 [label="1
-Prob: 0.618
-Frac: 0.033", fillcolor="#bed196"] ;
-21 [label="29", fillcolor="#a6d6ad"] ;
+Prob: 0.628
+Frac: 0.042", fillcolor="#bfd094"] ;
+17 [label="10", fillcolor="#c8ce8b"] ;
+18 [label="1
+Prob: 0.65
+Frac: 0.121", fillcolor="#c3cf90"] ;
+19 [label="45", fillcolor="#a6d6ad"] ;
+20 [label="2
+Prob: 0.571
+Frac: 0.069", fillcolor="#9dd9b6"] ;
+21 [label="39", fillcolor="#8edcc5"] ;
 22 [label="2
-Prob: 0.541
-Frac: 0.238", fillcolor="#a2d7b1"] ;
+Prob: 0.735
+Frac: 0.082", fillcolor="#82dfd1"] ;
 23 [label="5", fillcolor="#a7d6ac"] ;
 24 [label="2
-Prob: 0.556
-Frac: 0.106", fillcolor="#a0d8b3"] ;
-25 [label="44", fillcolor="#7ee0d5"] ;
+Prob: 0.558
+Frac: 0.051", fillcolor="#a0d8b3"] ;
+25 [label="20", fillcolor="#7ee0d5"] ;
 26 [label="2
-Prob: 0.819
-Frac: 0.337", fillcolor="#73e3e0"] ;
+Prob: 0.667
+Frac: 0.027", fillcolor="#8dddc6"] ;
+27 [label="29", fillcolor="#7ae1d9"] ;
+28 [label="2
+Prob: 0.79
+Frac: 0.366", fillcolor="#78e2db"] ;
 1 -- 0 [label=" 2\n 3",penwidth=3] ;
 1 -- 2 [label=" 1\n 5",penwidth=3] ;
 3 -- 1 [label=" 2\n 3",penwidth=3] ;
 3 -- 4 [label=" 1\n 5",penwidth=3] ;
 5 -- 3 [label=" 1\n 4",penwidth=3] ;
 5 -- 7 [label=" 2\n 3\n 5\n 6",penwidth=3] ;
-7 -- 6 [label=" 2\n 4",penwidth=3] ;
-7 -- 8 [label=" 1\n 3\n 5",penwidth=3] ;
-9 -- 5 [label=" 1\n 3",penwidth=3] ;
-9 -- 11 [label=" 2\n 4\n 5",penwidth=3] ;
-11 -- 10 [label=" 1",penwidth=3] ;
-11 -- 12 [label=" 3\n 4",penwidth=3] ;
-13 -- 9 [label=" 1",penwidth=3] ;
-13 -- 17 [label=" 2\n 3\n 4",penwidth=3] ;
+7 -- 6 [label=" 1\n 3",penwidth=3] ;
+7 -- 9 [label=" 2\n 4",penwidth=3] ;
+9 -- 8 [label=" 1\n 3",penwidth=3] ;
+9 -- 10 [label=" 2\n 4",penwidth=3] ;
+11 -- 5 [label=" 1\n 3",penwidth=3] ;
+11 -- 12 [label=" 2\n 4\n 5",penwidth=3] ;
+13 -- 11 [label=" 1",penwidth=3] ;
+13 -- 15 [label=" 2\n 3\n 4",penwidth=3] ;
 15 -- 14 [label=" 1",penwidth=3] ;
 15 -- 16 [label=" 2\n 3\n 4",penwidth=3] ;
-17 -- 15 [label=" 1",penwidth=3] ;
-17 -- 18 [label=" 2",penwidth=3] ;
-19 -- 13 [label=" 1",penwidth=3] ;
-19 -- 21 [label=" 2",penwidth=3] ;
+17 -- 13 [label=" 1",penwidth=3] ;
+17 -- 19 [label=" 2",penwidth=3] ;
+19 -- 18 [label=" 1",penwidth=3] ;
+19 -- 21 [label=" 2\n 3\n 4\n 5",penwidth=3] ;
 21 -- 20 [label=" 1",penwidth=3] ;
-21 -- 22 [label=" 2\n 3\n 4",penwidth=3] ;
-23 -- 19 [label=" 1",penwidth=3] ;
+21 -- 22 [label=" 2",penwidth=3] ;
+23 -- 17 [label=" 1",penwidth=3] ;
 23 -- 25 [label=" 2",penwidth=3] ;
 25 -- 24 [label=" 1",penwidth=3] ;
-25 -- 26 [label=" 2\n 3\n 4\n 5",penwidth=3] ;
+25 -- 27 [label=" 2\n 3\n 4",penwidth=3] ;
+27 -- 26 [label=" 1",penwidth=3] ;
+27 -- 28 [label=" 2\n 3\n 4",penwidth=3] ;
 {rank = same;}}

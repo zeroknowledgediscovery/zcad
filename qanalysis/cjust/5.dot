@@ -126,19 +126,31 @@ Frac: 0.049", fillcolor="#81e0d2"] ;
 Prob: 0.64
 Frac: 0.049", fillcolor="#92dbc1"] ;
 61 [label="22", fillcolor="#6ee4e5"] ;
-62 [label="2
-Prob: 0.825
-Frac: 0.079", fillcolor="#72e3e1"] ;
-63 [label="50", fillcolor="#6ce5e7"] ;
+62 [label="1
+Prob: 0.6
+Frac: 0.005", fillcolor="#bbd199"] ;
+63 [label="19", fillcolor="#6ce5e7"] ;
 64 [label="2
+Prob: 0.889
+Frac: 0.009", fillcolor="#67e6ec"] ;
+65 [label="50", fillcolor="#8dddc6"] ;
+66 [label="1
 Prob: 1.0
-Frac: 0.011", fillcolor="#55ebff"] ;
-65 [label="22", fillcolor="#64e7ef"] ;
-66 [label="2
-Prob: 0.886
-Frac: 0.043", fillcolor="#68e6eb"] ;
-67 [label="50", fillcolor="#66e6ed"] ;
+Frac: 0.003", fillcolor="#ffc155"] ;
+67 [label="48", fillcolor="#64e7ef"] ;
 68 [label="2
+Prob: 0.94
+Frac: 0.083", fillcolor="#5fe8f4"] ;
+69 [label="17", fillcolor="#69e5ea"] ;
+70 [label="2
+Prob: 1.0
+Frac: 0.01", fillcolor="#55ebff"] ;
+71 [label="57", fillcolor="#78e2dc"] ;
+72 [label="2
+Prob: 0.708
+Frac: 0.024", fillcolor="#86decd"] ;
+73 [label="50", fillcolor="#66e6ed"] ;
+74 [label="2
 Prob: 0.948
 Frac: 0.096", fillcolor="#5de8f6"] ;
 1 -- 0 [label=" 1",penwidth=3] ;
@@ -202,11 +214,17 @@ Frac: 0.096", fillcolor="#5de8f6"] ;
 59 -- 57 [label=" 1",penwidth=3] ;
 59 -- 61 [label=" 2\n 3\n 4\n 5",penwidth=3] ;
 61 -- 60 [label=" 1",penwidth=3] ;
-61 -- 67 [label=" 2\n 3\n 4",penwidth=3] ;
-63 -- 62 [label=" 1\n 3",penwidth=3] ;
-63 -- 65 [label=" 4",penwidth=3] ;
-65 -- 64 [label=" 2",penwidth=3] ;
-65 -- 66 [label=" 3\n 4",penwidth=3] ;
-67 -- 63 [label=" 1\n 3\n 4",penwidth=3] ;
-67 -- 68 [label=" 2\n 5",penwidth=3] ;
+61 -- 73 [label=" 2\n 3\n 4",penwidth=3] ;
+63 -- 62 [label=" 1",penwidth=3] ;
+63 -- 69 [label=" 2\n 3\n 4",penwidth=3] ;
+65 -- 64 [label=" 1",penwidth=3] ;
+65 -- 66 [label=" 3",penwidth=3] ;
+67 -- 65 [label=" 1",penwidth=3] ;
+67 -- 68 [label=" 2\n 3\n 4\n 5",penwidth=3] ;
+69 -- 67 [label=" 2\n 3",penwidth=3] ;
+69 -- 71 [label=" 1\n 4",penwidth=3] ;
+71 -- 70 [label=" 2",penwidth=3] ;
+71 -- 72 [label=" 1\n 3\n 4\n 5",penwidth=3] ;
+73 -- 63 [label=" 1\n 3\n 4",penwidth=3] ;
+73 -- 74 [label=" 2\n 5",penwidth=3] ;
 {rank = same;}}

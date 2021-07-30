@@ -84,21 +84,17 @@ Frac: 0.004", fillcolor="#aad6aa"] ;
 39 [label="182", fillcolor="#91dbc2"] ;
 40 [label="1
 Prob: 1.0
-Frac: 0.005", fillcolor="#ffc155"] ;
-41 [label="24", fillcolor="#e6c76d"] ;
+Frac: 0.002", fillcolor="#ffc155"] ;
+41 [label="49", fillcolor="#e6c76d"] ;
 42 [label="1
-Prob: 0.5
-Frac: 0.002", fillcolor="#aad6aa"] ;
+Prob: 0.8
+Frac: 0.005", fillcolor="#ddc977"] ;
 43 [label="26", fillcolor="#8fdcc4"] ;
-44 [label="1
-Prob: 0.5
-Frac: 0.002", fillcolor="#aad6aa"] ;
-45 [label="185", fillcolor="#82dfd1"] ;
-46 [label="2
-Prob: 0.744
-Frac: 0.047", fillcolor="#80e0d3"] ;
-1 -- 0 [label=" 7\n 3\n 8\n 5\n 1\n 6",penwidth=3] ;
-1 -- 2 [label=" 2\n 9",penwidth=3] ;
+44 [label="2
+Prob: 0.733
+Frac: 0.049", fillcolor="#82dfd1"] ;
+1 -- 0 [label=" 5\n 7\n 9\n 1\n 6",penwidth=3] ;
+1 -- 2 [label=" 2\n 3\n 8",penwidth=3] ;
 3 -- 1 [label=" 2\n 3",penwidth=3] ;
 3 -- 4 [label=" 1\n 4",penwidth=3] ;
 5 -- 3 [label=" 1",penwidth=3] ;
@@ -137,10 +133,8 @@ Frac: 0.047", fillcolor="#80e0d3"] ;
 37 -- 38 [label=" 1\n 5",penwidth=3] ;
 39 -- 37 [label=" 1\n 3\n 4",penwidth=3] ;
 39 -- 43 [label=" 2\n 5\n 6",penwidth=3] ;
-41 -- 40 [label=" 2",penwidth=3] ;
-41 -- 42 [label=" 1\n 4",penwidth=3] ;
+41 -- 40 [label=" 4",penwidth=3] ;
+41 -- 42 [label=" 2\n 5",penwidth=3] ;
 43 -- 41 [label=" 1",penwidth=3] ;
-43 -- 45 [label=" 2\n 3\n 4",penwidth=3] ;
-45 -- 44 [label=" 1\n 5",penwidth=3] ;
-45 -- 46 [label=" 2\n 3\n 4\n 6",penwidth=3] ;
+43 -- 44 [label=" 2\n 3\n 4",penwidth=3] ;
 {rank = same;}}

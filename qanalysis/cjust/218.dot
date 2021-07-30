@@ -33,11 +33,11 @@ Frac: 0.004", fillcolor="#ffc155"] ;
 14 [label="1
 Prob: 1.0
 Frac: 0.006", fillcolor="#ffc155"] ;
-15 [label="222", fillcolor="#fcc157"] ;
+15 [label="4", fillcolor="#fcc157"] ;
 16 [label="1
 Prob: 1.0
 Frac: 0.002", fillcolor="#ffc155"] ;
-17 [label="4", fillcolor="#fcc157"] ;
+17 [label="222", fillcolor="#fcc157"] ;
 18 [label="1
 Prob: 1.0
 Frac: 0.002", fillcolor="#ffc155"] ;
@@ -140,9 +140,9 @@ Frac: 0.038", fillcolor="#6ae5e9"] ;
 13 -- 11 [label=" 1",penwidth=3] ;
 13 -- 14 [label=" 2",penwidth=3] ;
 15 -- 13 [label=" 1",penwidth=3] ;
-15 -- 16 [label=" 4",penwidth=3] ;
+15 -- 16 [label=" 2",penwidth=3] ;
 17 -- 15 [label=" 1",penwidth=3] ;
-17 -- 18 [label=" 2",penwidth=3] ;
+17 -- 18 [label=" 4",penwidth=3] ;
 19 -- 17 [label=" 1",penwidth=3] ;
 19 -- 20 [label=" 2",penwidth=3] ;
 21 -- 19 [label=" 1",penwidth=3] ;

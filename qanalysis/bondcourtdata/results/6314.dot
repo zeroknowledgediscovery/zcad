@@ -1,0 +1,56 @@
+graph Tree {
+node [shape=box, style="filled, rounded",color="black",penwidth="3",fontcolor="black",                 fontname=helvetica] ;
+graph [ranksep="0 equally", splines=straight,                 bgcolor=transparent, dpi=200] ;
+edge [fontname=helvetica, color=black] ;
+0 [label="1
+Prob: 0.982
+Frac: 0.09", fillcolor="#fdc056"] ;
+1 [label="6408", fillcolor="#f8c257"] ;
+2 [label="1
+Prob: 1.0
+Frac: 0.017", fillcolor="#ffc155"] ;
+3 [label="6411", fillcolor="#eac957"] ;
+4 [label="1
+Prob: 0.6
+Frac: 0.004", fillcolor="#c3d955"] ;
+5 [label="6411", fillcolor="#decd59"] ;
+6 [label="1
+Prob: 1.0
+Frac: 0.006", fillcolor="#ffc155"] ;
+7 [label="6399", fillcolor="#e2cc5a"] ;
+8 [label="1
+Prob: 0.75
+Frac: 0.019", fillcolor="#d8cf5c"] ;
+9 [label="6422", fillcolor="#f7c258"] ;
+10 [label="1
+Prob: 0.571
+Frac: 0.006", fillcolor="#d4c36d"] ;
+11 [label="6436", fillcolor="#f8c258"] ;
+12 [label="1
+Prob: 0.95
+Frac: 0.558", fillcolor="#f8c257"] ;
+13 [label="6319", fillcolor="#f3c35b"] ;
+14 [label="1
+Prob: 0.788
+Frac: 0.185", fillcolor="#e3c667"] ;
+15 [label="6315", fillcolor="#eec35f"] ;
+16 [label="1
+Prob: 0.458
+Frac: 0.115", fillcolor="#c6c37f"] ;
+1 -- 0 [label=" 1\n 2\n 3\n 4",penwidth=3] ;
+1 -- 9 [label=" 5",penwidth=3] ;
+3 -- 2 [label=" 1\n 3",penwidth=3] ;
+3 -- 5 [label=" 2\n 4\n 5",penwidth=3] ;
+5 -- 4 [label=" 4",penwidth=3] ;
+5 -- 7 [label=" 2\n 5",penwidth=3] ;
+7 -- 6 [label=" 1\n 3\n 4",penwidth=3] ;
+7 -- 8 [label=" 2\n 5",penwidth=3] ;
+9 -- 3 [label=" 3\n 4",penwidth=3] ;
+9 -- 11 [label=" 1\n 2\n 5",penwidth=3] ;
+11 -- 10 [label=" 4",penwidth=3] ;
+11 -- 12 [label=" 1\n 2\n 3\n 5",penwidth=3] ;
+13 -- 1 [label=" 1",penwidth=3] ;
+13 -- 14 [label=" 2\n 3\n 4",penwidth=3] ;
+15 -- 13 [label=" 1",penwidth=3] ;
+15 -- 16 [label=" 2\n 3\n 4",penwidth=3] ;
+{rank = same;}}
