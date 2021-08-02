@@ -1,0 +1,116 @@
+graph Tree {
+node [shape=box, style="filled, rounded",color="black",penwidth="3",fontcolor="black",                 fontname=helvetica] ;
+graph [ranksep="0 equally", splines=straight,                 bgcolor=transparent, dpi=60] ;
+edge [fontname=helvetica, color=black] ;
+0 [label="2
+Prob: 1.0
+Frac: 0.013", fillcolor="#6aff55"] ;
+1 [label="ptsd175",href=".//ptsd175.svg", fillcolor="#79f085"] ;
+2 [label="3
+Prob: 0.667
+Frac: 0.01", fillcolor="#8dddc6"] ;
+3 [label="ptsd190",href=".//ptsd190.svg", fillcolor="#e3ca5d"] ;
+4 [label="1
+Prob: 0.839
+Frac: 0.655", fillcolor="#e7c95b"] ;
+5 [label="ptsd161",href=".//ptsd161.svg", fillcolor="#c2ce7e"] ;
+6 [label="1
+Prob: 1.0
+Frac: 0.01", fillcolor="#ffc155"] ;
+7 [label="ptsd179",href=".//ptsd179.svg", fillcolor="#7ff366"] ;
+8 [label="2
+Prob: 1.0
+Frac: 0.007", fillcolor="#6aff55"] ;
+9 [label="ptsd206",href=".//ptsd206.svg", fillcolor="#63f88d"] ;
+10 [label="2
+Prob: 0.5
+Frac: 0.013", fillcolor="#5ff5aa"] ;
+11 [label="ptsd121",href=".//ptsd121.svg", fillcolor="#67fc6a"] ;
+12 [label="2
+Prob: 1.0
+Frac: 0.033", fillcolor="#6aff55"] ;
+13 [label="ptsd136",href=".//ptsd136.svg", fillcolor="#8cceb7"] ;
+14 [label="3
+Prob: 1.0
+Frac: 0.007", fillcolor="#55ebff"] ;
+15 [label="ptsd61",href=".//ptsd61.svg", fillcolor="#af9bff"] ;
+16 [label="3
+Prob: 1.0
+Frac: 0.013", fillcolor="#55ebff"] ;
+17 [label="ptsd61",href=".//ptsd61.svg", fillcolor="#bd8eff"] ;
+18 [label="4
+Prob: 1.0
+Frac: 0.023", fillcolor="#ff55ff"] ;
+19 [label="ptsd19",href=".//ptsd19.svg", fillcolor="#ec65ff"] ;
+20 [label="3
+Prob: 0.5
+Frac: 0.007", fillcolor="#aaa0ff"] ;
+21 [label="ptsd197",href=".//ptsd197.svg", fillcolor="#91c0d4"] ;
+22 [label="3
+Prob: 0.667
+Frac: 0.01", fillcolor="#5cf1c6"] ;
+23 [label="ptsd152",href=".//ptsd152.svg", fillcolor="#85cfc3"] ;
+24 [label="3
+Prob: 0.667
+Frac: 0.01", fillcolor="#5cf1c6"] ;
+25 [label="ptsd102",href=".//ptsd102.svg", fillcolor="#a0ade6"] ;
+26 [label="3
+Prob: 0.8
+Frac: 0.016", fillcolor="#59efdd"] ;
+27 [label="ptsd185",href=".//ptsd185.svg", fillcolor="#b39bef"] ;
+28 [label="4
+Prob: 1.0
+Frac: 0.02", fillcolor="#ff55ff"] ;
+29 [label="ptsd101",href=".//ptsd101.svg", fillcolor="#88ccc3"] ;
+30 [label="3
+Prob: 0.667
+Frac: 0.02", fillcolor="#74e7c6"] ;
+31 [label="ptsd173",href=".//ptsd173.svg", fillcolor="#77e2aa"] ;
+32 [label="2
+Prob: 0.571
+Frac: 0.046", fillcolor="#79e19d"] ;
+33 [label="ptsd193",href=".//ptsd193.svg", fillcolor="#7ed6c4"] ;
+34 [label="3
+Prob: 0.692
+Frac: 0.043", fillcolor="#5bf1ca"] ;
+35 [label="ptsd85",href=".//ptsd85.svg", fillcolor="#58ede5"] ;
+36 [label="3
+Prob: 1.0
+Frac: 0.046", fillcolor="#55ebff"] ;
+1 -- 0 [label=" 2",penwidth=3] ;
+1 -- 2 [label=" 1\n 5",penwidth=3] ;
+3 -- 1 [label=" 2\n 3",penwidth=3] ;
+3 -- 4 [label=" 1\n 4",penwidth=3] ;
+5 -- 3 [label=" 1",penwidth=3] ;
+5 -- 33 [label=" 2\n 3\n 4\n 5",penwidth=3] ;
+7 -- 6 [label=" 1",penwidth=3] ;
+7 -- 11 [label=" 2\n 3\n 4",penwidth=3] ;
+9 -- 8 [label=" 2",penwidth=3] ;
+9 -- 10 [label=" 1\n 3",penwidth=3] ;
+11 -- 9 [label=" 1\n 3",penwidth=3] ;
+11 -- 12 [label=" 2\n 4",penwidth=3] ;
+13 -- 7 [label=" 2",penwidth=3] ;
+13 -- 21 [label=" 1\n 3\n 4\n 5",penwidth=3] ;
+15 -- 14 [label=" 1\n 3",penwidth=3] ;
+15 -- 17 [label=" 4\n 5",penwidth=3] ;
+17 -- 16 [label=" 4",penwidth=3] ;
+17 -- 19 [label=" 5",penwidth=3] ;
+19 -- 18 [label=" 4",penwidth=3] ;
+19 -- 20 [label=" 3\n 5",penwidth=3] ;
+21 -- 15 [label=" 4",penwidth=3] ;
+21 -- 23 [label=" 1\n 2\n 3\n 5",penwidth=3] ;
+23 -- 22 [label=" 3",penwidth=3] ;
+23 -- 29 [label=" 1\n 2\n 4\n 5",penwidth=3] ;
+25 -- 24 [label=" 1\n 2",penwidth=3] ;
+25 -- 27 [label=" 3\n 4\n 5",penwidth=3] ;
+27 -- 26 [label=" 2\n 3",penwidth=3] ;
+27 -- 28 [label=" 1\n 4",penwidth=3] ;
+29 -- 25 [label=" 3\n 4",penwidth=3] ;
+29 -- 31 [label=" 1\n 2\n 5",penwidth=3] ;
+31 -- 30 [label=" 3\n 4",penwidth=3] ;
+31 -- 32 [label=" 1\n 2\n 5",penwidth=3] ;
+33 -- 13 [label=" 1\n 2\n 4",penwidth=3] ;
+33 -- 35 [label=" 3\n 5",penwidth=3] ;
+35 -- 34 [label=" 1\n 2\n 4",penwidth=3] ;
+35 -- 36 [label=" 3\n 5",penwidth=3] ;
+{rank = same;}}
