@@ -108,7 +108,6 @@ def index():
 </body>
 </html>
 ```
-I apologize for the interruption. I will continue from the last incomplete code block.
 
 Add the following content to `app/templates/result.html`:
 
@@ -234,8 +233,6 @@ server {
 ```
 
 Save and close the file.
-
-I apologize for the interruption once again. I will continue from the last incomplete block.
 
 h. Create a symbolic link to enable the Nginx site configuration:
 
